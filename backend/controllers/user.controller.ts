@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/user.model";
 
-// @desc    Get users
+// @desc    Read users
 // @route   GET /api/users
 // @access  Private
 const getUsers = asyncHandler(async (req: Request, res: Response) => {
@@ -13,7 +13,7 @@ const getUsers = asyncHandler(async (req: Request, res: Response) => {
 // @desc    Create user
 // @route   POST /api/users
 // @access  Private
-const createUser = asyncHandler(async (req: Request, res: Response) => {
+const registerUser = asyncHandler(async (req: Request, res: Response) => {
   if (!req.body.name) {
     res.status(400);
     throw new Error("Please add a name field");
@@ -55,4 +55,4 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json({ id: req.params.id });
 });
 
-export default { getUsers, createUser, updateUser, deleteUser };
+export default { getUsers, registerUser, updateUser, deleteUser };
