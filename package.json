@@ -1,0 +1,24 @@
+{
+  "name": "mern-stack-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ni-xon/mern-stack-tutorial.git",
+  "author": "ni-xon <nixonuch_@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --config nodemon.json backend/server.ts"
+  },
+  "devDependencies": {
+    "@designed-and-developed/eslint-config-prettier-typescript-react": "^1.0.9",
+    "eslint": "^8.10.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.6.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4",
+    "typescript": "^4.6.2"
+  }
+}
