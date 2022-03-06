@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import User from "../models/user.model";
+import jwt from "jsonwebtoken";
+import brcrypt from "bcrypt";
 
 // @desc    Read users
 // @route   GET /api/users
@@ -10,21 +12,56 @@ const getUsers = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json(users);
 });
 
-// @desc    Create user
-// @route   POST /api/users
+// @desc    Get current user data
+// @route   GET /api/users/me
 // @access  Private
+const getCurrentUser = asyncHandler(async (req: Request, res: Response) => {
+  res.status(200).json({ message: "Data for current user" });
+});
+
+// @desc    Create new user
+// @route   POST /api/users
+// @access  Public
 const registerUser = asyncHandler(async (req: Request, res: Response) => {
-  if (!req.body.name) {
+  // Check existence of all field inputs
+  const { email, name, password } = req.body;
+  if (!name || !email || !password) {
     res.status(400);
-    throw new Error("Please add a name field");
+    throw new Error("Please add all fields");
   }
 
-  const user = await User.create({
-    email: req.body.email,
-    name: req.body.name,
-    password: req.body.password,
-  });
-  res.status(200).json(user);
+  // Check user existence
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+
+  // Hash password
+  const salt = await brcrypt.genSalt(10);
+  const hashedPassword = await brcrypt.hash(password, salt);
+
+  // Create user
+  const user = await User.create({ email, name, password: hashedPassword });
+
+  // Send response
+  if (user) {
+    res.status(200).json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
+});
+
+// @desc    Authenticate a user
+// @route   POST /api/users/login
+// @access  Public
+const loginUser = asyncHandler(async (req: Request, res: Response) => {
+  res.status(200).json({ message: "Login User" });
 });
 
 // @desc    Update user
@@ -55,4 +92,11 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json({ id: req.params.id });
 });
 
-export default { getUsers, registerUser, updateUser, deleteUser };
+export default {
+  getUsers,
+  getCurrentUser,
+  registerUser,
+  loginUser,
+  updateUser,
+  deleteUser,
+};
