@@ -65,12 +65,23 @@ const updateTask = asyncHandler(
 // @access  Private
 const deleteTask = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
-    const task = await Task.findById(req.user.id);
+    const task = await Task.findById(req.params.id);
     if (!task) {
       res.status(400);
       throw new Error("Task not found");
     }
-    await Task.findByIdAndDelete(req.user.id);
+    // Check that user exists
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      res.status(401);
+      throw new Error("User not found");
+    }
+    // Ensure logged in user matches task user
+    if (task.user.toString() !== user.id) {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
+    await Task.findByIdAndDelete(req.params.id);
     res.status(200).json(req.user.id);
   }
 );
