@@ -1,12 +1,9 @@
 import jwt from "jsonwebtoken";
 import { JwtPayload } from "jsonwebtoken";
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
+import { UserAuthInfoRequest } from "../types";
 import asyncHandler from "express-async-handler";
 import User from "../models/user.model";
-
-interface UserAuthInfoRequest extends Request {
-  user?: string;
-}
 
 // This middleware verifies whether or not a JWT can be decoded to match an existing id within the DB
 const protect = asyncHandler(

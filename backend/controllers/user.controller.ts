@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { UserAuthInfoRequest } from "../types";
 import { ObjectId } from "mongoose";
 import asyncHandler from "express-async-handler";
 import User from "../models/user.model";
@@ -16,9 +17,12 @@ const getUsers = asyncHandler(async (req: Request, res: Response) => {
 // @desc    Get current user data
 // @route   GET /api/users/me
 // @access  Private
-const getCurrentUser = asyncHandler(async (req: Request, res: Response) => {
-  res.status(200).json({ message: "Data for current user" });
-});
+const getCurrentUser = asyncHandler(
+  async (req: UserAuthInfoRequest, res: Response) => {
+    const { _id, name, email } = await User.findById(req.user.id);
+    res.status(200).json({ id: _id, name: name, email: email });
+  }
+);
 
 // @desc    Create new user
 // @route   POST /api/users
