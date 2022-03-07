@@ -6,7 +6,8 @@
   "author": "ni-xon <nixonuch_@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --config nodemon.json backend/server.ts"
+    "server": "nodemon --config nodemon.json backend/server.ts",
+    "client": "yarn --cwd frontend start"
   },
   "devDependencies": {
     "@designed-and-developed/eslint-config-prettier-typescript-react": "^1.0.9",
