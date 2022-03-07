@@ -1,10 +1,14 @@
 import { Request, Response } from "express";
-import { UserAuthInfoRequest } from "../types";
 import { ObjectId } from "mongoose";
 import asyncHandler from "express-async-handler";
-import User from "../models/user.model";
 import jwt from "jsonwebtoken";
 import brcrypt from "bcrypt";
+import { UserAuthInfoRequest } from "../types";
+import User from "../models/user.model";
+
+// Function to generate JWT
+const generateToken = (id: ObjectId) =>
+  jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: "30d" });
 
 // @desc    Get current user data
 // @route   GET /api/users/me
@@ -14,8 +18,8 @@ const getCurrentUser = asyncHandler(
     const { _id, name, email } = await User.findById(req.user.id);
     res.status(200).json({
       id: _id,
-      name: name,
-      email: email,
+      name,
+      email,
     });
   }
 );
@@ -72,6 +76,7 @@ const loginUser = asyncHandler(async (req: Request, res: Response) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      /* eslint no-underscore-dangle: 0 */
       token: generateToken(user._id),
     });
   } else {
@@ -107,11 +112,6 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
   const deletedUser = await User.findByIdAndDelete(req.params.id);
   res.status(200).json({ id: req.params.id });
 });
-
-// Function to generate JWT
-const generateToken = (id: ObjectId) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: "30d" });
-};
 
 export default {
   getCurrentUser,
