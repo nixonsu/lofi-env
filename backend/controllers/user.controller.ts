@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ObjectId } from "mongoose";
 import asyncHandler from "express-async-handler";
 import User from "../models/user.model";
 import jwt from "jsonwebtoken";
@@ -46,10 +47,11 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 
   // Send response
   if (user) {
-    res.status(200).json({
+    res.status(201).json({
       _id: user.id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -61,7 +63,21 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req: Request, res: Response) => {
-  res.status(200).json({ message: "Login User" });
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+
+  // If user exists and password matches
+  if (user && (await brcrypt.compare(password, user.password))) {
+    res.status(200).json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid credentials");
+  }
 });
 
 // @desc    Update user
@@ -91,6 +107,11 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
   const deletedUser = await User.findByIdAndDelete(req.params.id);
   res.status(200).json({ id: req.params.id });
 });
+
+// Function to generate JWT
+const generateToken = (id: ObjectId) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: "30d" });
+};
 
 export default {
   getUsers,
