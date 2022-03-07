@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.routes";
+import taskRoutes from "./routes/task.routes";
 import errorHandler from "./middleware/errorHandler";
 import connectDB from "./config/connect";
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes middleware
 app.use("/api/users", userRoutes);
+app.use("/api/tasks", taskRoutes);
 
 // Custom error handler middleware ()
 app.use(errorHandler);

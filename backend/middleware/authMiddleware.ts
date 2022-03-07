@@ -1,8 +1,7 @@
-import jwt from "jsonwebtoken";
-import { JwtPayload } from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { Response, NextFunction } from "express";
-import { UserAuthInfoRequest } from "../types";
 import asyncHandler from "express-async-handler";
+import { UserAuthInfoRequest } from "../types";
 import User from "../models/user.model";
 
 // This middleware verifies whether or not a JWT can be decoded to match an existing id within the DB
@@ -27,7 +26,7 @@ const protect = asyncHandler(
         req.user = await User.findById(decoded.id).select("-password");
 
         // If user extracted from token is null (not found in DB), throw an error
-        if (req.user === null) throw new Error();
+        if (req.user === null) return;
         next();
       } catch (err) {
         res.status(401);
