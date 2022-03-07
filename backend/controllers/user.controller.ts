@@ -6,21 +6,17 @@ import User from "../models/user.model";
 import jwt from "jsonwebtoken";
 import brcrypt from "bcrypt";
 
-// @desc    Read users
-// @route   GET /api/users
-// @access  Private
-const getUsers = asyncHandler(async (req: Request, res: Response) => {
-  const users = await User.find();
-  res.status(200).json(users);
-});
-
 // @desc    Get current user data
 // @route   GET /api/users/me
 // @access  Private
 const getCurrentUser = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
     const { _id, name, email } = await User.findById(req.user.id);
-    res.status(200).json({ id: _id, name: name, email: email });
+    res.status(200).json({
+      id: _id,
+      name: name,
+      email: email,
+    });
   }
 );
 
@@ -118,7 +114,6 @@ const generateToken = (id: ObjectId) => {
 };
 
 export default {
-  getUsers,
   getCurrentUser,
   registerUser,
   loginUser,

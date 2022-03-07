@@ -4,7 +4,6 @@ import protect from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.get("/", controller.getUsers);
 router.get("/me", protect, controller.getCurrentUser);
 router.post("/", controller.registerUser);
 router.post("/login", controller.loginUser);
