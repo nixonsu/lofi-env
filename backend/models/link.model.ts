@@ -7,7 +7,7 @@ const linkSchema = new mongoose.Schema({
     // Each goal has a reference to the User model
     ref: "User",
   },
-  link: { type: String, required: false },
+  url: { type: String, required: false },
 });
 
 const Link = mongoose.model("Link", linkSchema);

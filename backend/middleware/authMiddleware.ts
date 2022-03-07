@@ -26,7 +26,7 @@ const protect = asyncHandler(
         req.user = await User.findById(decoded.id).select("-password");
 
         // If user extracted from token is null (not found in DB), throw an error
-        if (req.user === null) return;
+        if (req.user === null) throw new Error();
         next();
       } catch (err) {
         res.status(401);

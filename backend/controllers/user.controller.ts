@@ -109,7 +109,7 @@ const deleteUser = asyncHandler(async (req: Request, res: Response) => {
     res.status(400);
     throw new Error("User not found");
   }
-  const deletedUser = await User.findByIdAndDelete(req.params.id);
+  await User.findByIdAndDelete(req.params.id);
   res.status(200).json({ id: req.params.id });
 });
 
