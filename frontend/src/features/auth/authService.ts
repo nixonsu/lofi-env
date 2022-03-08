@@ -9,7 +9,7 @@ export interface User {
 
 const API_URL = "/api/users/";
 
-// Register User
+// Register User Service
 const register = async (userData: object) => {
   const response = await axios.post(API_URL, userData);
   // If response.data is received, save to local storage
@@ -19,8 +19,14 @@ const register = async (userData: object) => {
   return response.data;
 };
 
+// Logout User Service
+const logout = () => {
+  localStorage.removeItem("user");
+};
+
 const authService = {
   register,
+  logout,
 };
 
 export default authService;

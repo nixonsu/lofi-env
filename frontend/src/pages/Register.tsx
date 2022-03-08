@@ -1,6 +1,12 @@
 import React, { SyntheticEvent } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
+import { register, reset } from "../features/auth/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { RootState } from "../app/store";
+import Spinner from "../components/Spinner";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +16,29 @@ const Register = () => {
     confirmPassword: "",
   });
   const { name, email, password, confirmPassword } = formData;
+
+  // Initialise react-router-dom hook for redirects
+  const navigate = useNavigate();
+  // Initialise redux hook to dispatch a function
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state: RootState) => state.auth
+  );
+
+  // UseEffect hook detects whenever root state changes are updated
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate("/");
+      toast.success("Login successful!");
+    }
+
+    dispatch(reset);
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const handleOnChange = (e: SyntheticEvent) => {
     const element = e.target as HTMLInputElement;
@@ -21,7 +50,19 @@ const Register = () => {
 
   const handleOnSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+    } else {
+      const userData = { name, email, password };
+      dispatch(register(userData));
+    }
   };
+
+  // If rootState isLoading display spinner component
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -41,7 +82,7 @@ const Register = () => {
             name="name"
             value={name}
             placeholder="Enter Name"
-            onChange={handleOnSubmit}
+            onChange={handleOnChange}
           />
           <input
             type="email"
@@ -56,7 +97,7 @@ const Register = () => {
             id="password"
             name="password"
             value={password}
-            placeholder="Passowrd"
+            placeholder="Password"
             onChange={handleOnChange}
           />
           <input
@@ -67,7 +108,7 @@ const Register = () => {
             placeholder="Confirm Password"
             onChange={handleOnChange}
           />
-          <button type="submit"> Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </section>
     </>
