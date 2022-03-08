@@ -44,6 +44,23 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
 });
 
+// Login user
+export const login = createAsyncThunk(
+  "auth/login",
+  async (user: object, thunkAPI) => {
+    try {
+      return await authService.login(user);
+    } catch (err: any) {
+      // If any error exists put into message
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // Define logic for reducer logic for handling state
 export const authSlice = createSlice({
   name: "auth",
@@ -68,6 +85,21 @@ export const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = JSON.stringify(action.payload);
+        state.user = null;
+      })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        // payload is returned from register service
+        state.user = action.payload;
+      })
+      .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = JSON.stringify(action.payload);

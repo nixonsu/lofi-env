@@ -34,11 +34,13 @@ const Nav = () => {
           </li>
         )}
 
-        <li>
-          <Link to="/register">
-            <FaUser /> Register
-          </Link>
-        </li>
+        {!user ? (
+          <li>
+            <Link to="/register">
+              <FaUser /> Register
+            </Link>
+          </li>
+        ) : null}
       </ul>
     </StyledNav>
   );

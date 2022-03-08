@@ -1,6 +1,12 @@
 import React, { SyntheticEvent } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import { login, reset } from "../features/auth/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { RootState } from "../app/store";
+import Spinner from "../components/Spinner";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +14,29 @@ const Login = () => {
     password: "",
   });
   const { email, password } = formData;
+
+  // Initialise react-router-dom hook for redirects
+  const navigate = useNavigate();
+  // Initialise redux hook to dispatch a function
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state: RootState) => state.auth
+  );
+
+  // UseEffect hook detects whenever root state changes are updated
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      toast.success("Login successful");
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const handleOnChange = (e: SyntheticEvent) => {
     const element = e.target as HTMLInputElement;
@@ -19,7 +48,17 @@ const Login = () => {
 
   const handleOnSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(login(userData));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -46,10 +85,10 @@ const Login = () => {
             id="password"
             name="password"
             value={password}
-            placeholder="Passowrd"
+            placeholder="Password"
             onChange={handleOnChange}
           />
-          <button type="submit"> Login</button>
+          <button type="submit">Login</button>
         </form>
       </section>
     </>

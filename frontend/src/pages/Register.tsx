@@ -34,10 +34,9 @@ const Register = () => {
 
     if (isSuccess || user) {
       navigate("/");
-      toast.success("Login successful!");
     }
 
-    dispatch(reset);
+    dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const handleOnChange = (e: SyntheticEvent) => {
