@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 import { PayloadAction } from "@reduxjs/toolkit";
 
-// Get user from local storage (if localStorage.getItem returns null, replace it with "{}" as JSON.parse can onyl take strings)
-const user = JSON.parse(localStorage.getItem("user") || "{}");
+// Get user from local storage (stringify converts null -> "null" if localStorage.getItem returns null, as JSON.parse can only take strings)
+const user = JSON.parse(JSON.stringify(localStorage.getItem("user")));
 
 export interface State {
   user: any;
