@@ -1,0 +1,75 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import authService from "./authService";
+import { PayloadAction } from "@reduxjs/toolkit";
+
+// Get user from local storage (if localStorage.getItem returns null, replace it with "{}" as JSON.parse can onyl take strings)
+const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+export interface State {
+  user: any;
+  isError: boolean;
+  isSuccess: boolean;
+  isLoading: boolean;
+  message: PayloadAction | string;
+}
+
+// Initial auth state
+const initialState = {
+  user: user ? user : null,
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
+} as State;
+
+// Register user
+export const register = createAsyncThunk(
+  "auth/register",
+  async (user: object, thunkAPI) => {
+    try {
+      return await authService.register(user);
+    } catch (err: any) {
+      // If any error exists put into message
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// Define logic for reducer logic for handling state
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    reset: (state) => {
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = false;
+      state.message = "";
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        // payload is returned from register service
+        state.user = action.payload;
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = JSON.stringify(action.payload);
+        state.user = null;
+      });
+  },
+});
+
+export const { reset } = authSlice.actions;
+export default authSlice.reducer;
