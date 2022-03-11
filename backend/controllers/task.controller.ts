@@ -1,9 +1,7 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import asyncHandler from "express-async-handler";
-import { getOriginalNode } from "typescript";
 import { UserAuthInfoRequest } from "../types";
 import Task from "../models/task.model";
-import User from "../models/user.model";
 
 // @desc    Get tasks
 // @route   GET /api/tasks
@@ -43,13 +41,12 @@ const updateTask = asyncHandler(
       throw new Error("Task not found");
     }
     // Check that user exists
-    const user = await User.findById(req.user.id);
-    if (!user) {
+    if (!req.user) {
       res.status(401);
       throw new Error("User not found");
     }
     // Ensure logged in user matches task user
-    if (task.user.toString() !== user.id) {
+    if (task.user.toString() !== req.user.id) {
       res.status(401);
       throw new Error("User not authorized");
     }
@@ -71,13 +68,12 @@ const deleteTask = asyncHandler(
       throw new Error("Task not found");
     }
     // Check that user exists
-    const user = await User.findById(req.user.id);
-    if (!user) {
+    if (!req.user) {
       res.status(401);
       throw new Error("User not found");
     }
     // Ensure logged in user matches task user
-    if (task.user.toString() !== user.id) {
+    if (task.user.toString() !== req.user.id) {
       res.status(401);
       throw new Error("User not authorized");
     }
