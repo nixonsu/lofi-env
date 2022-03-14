@@ -15,13 +15,7 @@ const generateToken = (id: ObjectId) =>
 // @access  Private
 const getCurrentUser = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
-    const { _id, name, email, colour } = await User.findById(req.user.id);
-    res.status(200).json({
-      id: _id,
-      name,
-      email,
-      colour,
-    });
+    res.status(200).json(req.user);
   }
 );
 

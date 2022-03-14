@@ -6,7 +6,9 @@
   "author": "ni-xon <nixonuch_@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --config nodemon.json backend/server.ts"
+    "server": "nodemon --config nodemon.json backend/server.ts",
+    "client": "yarn --cwd frontend start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
     "@designed-and-developed/eslint-config-prettier-typescript-react": "^1.0.9",
@@ -15,6 +17,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.21",
+    "concurrently": "^7.0.0",
     "eslint": "^8.10.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
