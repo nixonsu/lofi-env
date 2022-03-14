@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store";
 import Header from "../components/Header";
 import Timer from "../components/Timer";
@@ -9,17 +9,31 @@ import Radio from "../components/Radio";
 import SoundPlayers from "../components/SoundPlayers";
 import { StyledApp } from "../styles/App.styled";
 import { ImageContainer } from "../styles/ImageContainer.styled";
+import { getTasks, reset } from "../features/tasks/taskSlice";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { user } = useSelector((state: RootState) => state.auth);
+  const { tasks, isLoading, isSuccess, isError, message } = useSelector(
+    (state: RootState) => state.tasks
+  );
 
   useEffect(() => {
+    if (!isError) {
+      console.log(message);
+    }
     if (!user) {
       navigate("/login");
     }
-  }, [user, navigate]);
+    dispatch(getTasks());
+
+    // Reset state on unmount
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, isError, message, navigate, dispatch]);
 
   return (
     <StyledApp>

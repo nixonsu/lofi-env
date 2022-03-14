@@ -3,7 +3,7 @@ import authService from "./authService";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 // Get user from local storage (stringify converts null -> "null" if localStorage.getItem returns null, as JSON.parse can only take strings)
-const user = JSON.parse(JSON.stringify(localStorage.getItem("user")));
+const user = JSON.parse(localStorage.getItem("user") as string);
 
 export interface State {
   user: any;

@@ -25,10 +25,6 @@ const TaskTracker = () => {
   };
 
   const addTask = (newTask: ITask) => {
-    if (tasks.length > 4) {
-      alert("Cannot add anynore tasks, please remove one to continue.");
-      return;
-    }
     buttonSound.play();
     setTasks([...tasks, newTask]);
   };
