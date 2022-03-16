@@ -58,7 +58,6 @@ const TaskTracker = () => {
   const addTask = (newTask: ITask) => {
     buttonSound.play();
     dispatch(createTask(newTask));
-    console.log(colors);
   };
   return (
     <StyledTaskTracker>

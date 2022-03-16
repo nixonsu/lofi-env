@@ -36,7 +36,6 @@ const Dashboard = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      {console.log(colors.backgroundColor)}
       <StyledApp>
         <div className="section first">
           <Timer />
