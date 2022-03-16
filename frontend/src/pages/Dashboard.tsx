@@ -12,8 +12,8 @@ import { ImageContainer } from "../styles/ImageContainer.styled";
 import { ThemeProvider } from "styled-components";
 import { DefaultTheme } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
-import { getColors } from "../features/colors/colorSlice";
-import { BlockPicker } from "react-color";
+import { getColors, updateColor } from "../features/colors/colorSlice";
+import { CirclePicker, ColorChangeHandler } from "react-color";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -34,6 +34,10 @@ const Dashboard = () => {
     dispatch(getColors());
   }, [user, navigate, dispatch]);
 
+  const handleOnChange: ColorChangeHandler = (color, event) => {
+    dispatch(updateColor({ ...colors, backgroundColor: color.hex }));
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -53,7 +57,11 @@ const Dashboard = () => {
         </div>
 
         <div className="section last">
-          <BlockPicker />
+          <CirclePicker
+            color={colors.backgroundColor}
+            colors={["#ffffcc", "#ffccee", "#ffccbb", "#ffcccc", "white"]}
+            onChange={handleOnChange}
+          />
           <SoundPlayers />
         </div>
       </StyledApp>

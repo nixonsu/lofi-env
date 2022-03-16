@@ -90,11 +90,7 @@ export const colorSlice = createSlice({
       .addCase(updateColor.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        // state.colors = state.colors.map((color) =>
-        //   color._id === action.payload._id
-        //     ? { ...color, isDone: !color.isDone }
-        //     : color
-        // );
+        state.colors = action.payload;
       })
       .addCase(updateColor.rejected, (state, action) => {
         state.isLoading = false;

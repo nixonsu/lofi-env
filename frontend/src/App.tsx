@@ -6,8 +6,6 @@ import Register from "./pages/Register";
 import Nav from "./components/Nav";
 import Dashboard from "./pages/Dashboard";
 
-// const colours = ["#ffcc", "#ffccee", "#ffccbb", "#ffcccc"];
-
 function App() {
   return (
     <>
