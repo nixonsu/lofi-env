@@ -13,6 +13,7 @@ import { ThemeProvider } from "styled-components";
 import { DefaultTheme } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getColors } from "../features/colors/colorSlice";
+import { BlockPicker } from "react-color";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ const Dashboard = () => {
         </div>
 
         <div className="section last">
+          <BlockPicker />
           <SoundPlayers />
         </div>
       </StyledApp>
