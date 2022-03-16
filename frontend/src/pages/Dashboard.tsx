@@ -9,31 +9,18 @@ import Radio from "../components/Radio";
 import SoundPlayers from "../components/SoundPlayers";
 import { StyledApp } from "../styles/App.styled";
 import { ImageContainer } from "../styles/ImageContainer.styled";
-import { getTasks, reset } from "../features/tasks/taskSlice";
+import { reset } from "../features/tasks/taskSlice";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const { user } = useSelector((state: RootState) => state.auth);
-  const { tasks, isLoading, isSuccess, isError, message } = useSelector(
-    (state: RootState) => state.tasks
-  );
 
   useEffect(() => {
-    if (!isError) {
-      console.log(message);
-    }
     if (!user) {
       navigate("/login");
     }
-    dispatch(getTasks());
-
-    // Reset state on unmount
-    return () => {
-      dispatch(reset());
-    };
-  }, [user, isError, message, navigate, dispatch]);
+  }, [user, navigate]);
 
   return (
     <StyledApp>

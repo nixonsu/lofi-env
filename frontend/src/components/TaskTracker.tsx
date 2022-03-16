@@ -1,38 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Tasks from "./Tasks";
 import AddTask from "./AddTask";
 import { StyledTaskTracker } from "../styles/TaskTracker.styled";
 import { ITask } from "../types";
+import { getTasks, reset } from "../features/tasks/taskSlice";
+import { RootState } from "../app/store";
+import { createTask } from "../features/tasks/taskSlice";
+import { deleteTask } from "../features/tasks/taskSlice";
 
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
 
 const TaskTracker = () => {
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state: RootState) => state.auth);
+  const {
+    tasks,
+    isLoading,
+    isSuccess,
+    isError,
+    message,
+  }: {
+    tasks: ITask[];
+    isLoading: boolean;
+    isSuccess: boolean;
+    isError: boolean;
+    message: string;
+  } = useSelector((state: RootState) => state.tasks);
+
+  useEffect(() => {
+    if (!isError) {
+      console.log(message);
+    }
+    dispatch(getTasks());
+
+    // Reset state on unmount
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, isError, message, navigate, dispatch]);
 
   const toggleTask = (id: number) => {
     buttonSound.play();
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, isDone: !task.isDone } : task
-      )
-    );
   };
 
-  const deleteTask = (id: number) => {
+  const removeTask = (task: ITask) => {
     buttonSound.play();
-    setTasks(tasks.filter((task) => task.id !== id));
+    dispatch(deleteTask(task));
   };
 
   const addTask = (newTask: ITask) => {
     buttonSound.play();
-    setTasks([...tasks, newTask]);
+    dispatch(createTask(newTask));
   };
   return (
     <StyledTaskTracker>
       <h1>to-do</h1>
       <AddTask onAdd={addTask} />
-      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleTask} />
+      <Tasks tasks={tasks} onDelete={removeTask} onToggle={toggleTask} />
     </StyledTaskTracker>
   );
 };

@@ -14,18 +14,18 @@ const Task = ({ task, onDelete, onToggle }: Props) => {
       {task.isDone ? (
         <>
           <p className="strike-through">{task.text}</p>
-          <IconButton onClick={() => onToggle(task.id)} icon={"mdi:check"} />
+          <IconButton onClick={() => onToggle(task)} icon={"mdi:check"} />
           <IconButton
-            onClick={() => onDelete(task.id)}
+            onClick={() => onDelete(task)}
             icon={"mdi:window-close"}
           />
         </>
       ) : (
         <>
           <p>{task.text}</p>
-          <IconButton onClick={() => onToggle(task.id)} icon={"mdi:check"} />
+          <IconButton onClick={() => onToggle(task)} icon={"mdi:check"} />
           <IconButton
-            onClick={() => onDelete(task.id)}
+            onClick={() => onDelete(task)}
             icon={"mdi:window-close"}
           />
         </>

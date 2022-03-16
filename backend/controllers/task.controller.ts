@@ -23,8 +23,9 @@ const createTask = asyncHandler(
       throw new Error("Please add a text field");
     }
     const task = await Task.create({
-      text: req.body.text,
       user: req.user.id,
+      text: req.body.text,
+      isDone: false,
     });
     res.status(200).json(task);
   }
@@ -78,7 +79,7 @@ const deleteTask = asyncHandler(
       throw new Error("User not authorized");
     }
     await Task.findByIdAndDelete(req.params.id);
-    res.status(200).json(req.user.id);
+    res.status(200).json(task);
   }
 );
 

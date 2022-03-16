@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ITask } from "../../types";
 
 const API_URL = "/api/tasks";
 
@@ -22,7 +23,15 @@ const createTask = async (taskData: object, token: string) => {
   return response.data;
 };
 
-const deleteTask = async () => {};
+const deleteTask = async (taskData: ITask, token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.delete(API_URL + `/${taskData._id}`, config);
+  return response.data;
+};
 
 const taskService = {
   getTasks,

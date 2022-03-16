@@ -11,8 +11,8 @@ interface Props {
 const Tasks = ({ tasks, onDelete, onToggle }: Props) => {
   return (
     <StyledTasks>
-      {tasks.map((task, index) => (
-        <Task key={index} task={task} onDelete={onDelete} onToggle={onToggle} />
+      {tasks.map((task) => (
+        <Task key={task._id} task={task} onDelete={onDelete} onToggle={onToggle} />
       ))}
     </StyledTasks>
   );

@@ -9,7 +9,8 @@ const taskSchema = new mongoose.Schema(
       // Each goal has a reference to the User model
       ref: "User",
     },
-    text: { type: String, required: false },
+    text: { type: String, required: true },
+    isDone: { type: Boolean, required: true },
   },
   { timestamps: true }
 );

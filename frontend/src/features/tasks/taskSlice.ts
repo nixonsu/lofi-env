@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import { ITask } from "../../types";
 import taskService from "./taskService";
 
 interface State {
-  tasks: string[];
+  tasks: ITask[];
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
@@ -55,7 +56,22 @@ export const createTask = createAsyncThunk(
 );
 
 // Delete task
-export const deleteTask = () => {};
+export const deleteTask = createAsyncThunk(
+  "tasks/delete",
+  async (taskData: ITask, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState() as RootState;
+      const token = state.auth.user.token;
+      return await taskService.deleteTask(taskData, token);
+    } catch (err: any) {
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 // Create slice
 export const taskSlice = createSlice({
@@ -88,6 +104,21 @@ export const taskSlice = createSlice({
         state.tasks = action.payload;
       })
       .addCase(getTasks.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = JSON.stringify(action.payload);
+      })
+      .addCase(deleteTask.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.tasks = state.tasks.filter(
+          (task) => task._id !== action.payload._id
+        );
+      })
+      .addCase(deleteTask.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = JSON.stringify(action.payload);
