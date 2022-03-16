@@ -4,12 +4,19 @@ export interface ITask {
   isDone: boolean;
 }
 
+export interface IColor {
+  _id: string;
+  backgroundColor: string;
+  primaryTextColor: string;
+  secondaryTextColor: string;
+}
+
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
-      primaryBlack: string;
-      primaryWhite: string;
-      secondaryWhite: string;
+      backgroundColor: string;
+      primaryTextColor: string;
+      secondaryTextColor: string;
     };
   }
 }

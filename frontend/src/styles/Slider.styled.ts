@@ -20,7 +20,7 @@ export const StyledSlider = styled.input<Props>`
   /******** Chrome, Safari, Opera and Edge Chromium styles ********/
   &::-webkit-slider-runnable-track {
     height: 13px;
-    background-color: ${({ theme }) => theme.colors.secondaryWhite};
+    background-color: ${({ theme }) => theme.colors.secondaryTextColor};
     border: none;
   }
 
@@ -30,8 +30,8 @@ export const StyledSlider = styled.input<Props>`
     width: 1px;
     outline: none;
     background-color: ${({ value }) =>
-      value === 0 ? "transparent" : ({ theme }) => theme.colors.primaryBlack};
-    box-shadow: -80px 0 0 80px ${({ theme }) => theme.colors.primaryBlack};
+      value === 0 ? "transparent" : ({ theme }) => theme.colors.primaryTextColor};
+    box-shadow: -80px 0 0 80px ${({ theme }) => theme.colors.primaryTextColor};
   }
 
   /******** Firefox styles ********/

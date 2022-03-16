@@ -9,7 +9,8 @@ import User from "../models/user.model";
 // @access  Private
 const getColors = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
-    const colors = await Color.find({ user: req.user.id });
+    // Destructure colors because there can only be one colors resource per user
+    const [colors] = await Color.find({ user: req.user.id });
     res.status(200).json(colors);
   }
 );

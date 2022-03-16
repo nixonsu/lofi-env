@@ -17,6 +17,8 @@ const TaskTracker = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
+  const { colors } = useSelector((state: RootState) => state.colors);
+
   const {
     tasks,
     isLoading,
@@ -56,6 +58,7 @@ const TaskTracker = () => {
   const addTask = (newTask: ITask) => {
     buttonSound.play();
     dispatch(createTask(newTask));
+    console.log(colors);
   };
   return (
     <StyledTaskTracker>

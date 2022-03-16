@@ -6,8 +6,8 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        background-color: ${({ theme }) => theme.colors.primaryWhite};
-        color: ${({ theme }) => theme.colors.primaryBlack};
+        background-color: ${({ theme }) => theme.colors.backgroundColor};
+        color: ${({ theme }) => theme.colors.primaryTextColor};
         font-family: 'Unibody';
     }
 
