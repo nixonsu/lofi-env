@@ -16,7 +16,7 @@ const AddTask = ({ onAdd }: Props) => {
       alert("Please add a task");
       return;
     }
-    onAdd({ id: Math.floor(Math.random() * 10000) + 1, text, isDone: false });
+    onAdd({ text, isDone: false });
     setText("");
   };
   return (

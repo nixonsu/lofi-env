@@ -5,7 +5,7 @@ import Tasks from "./Tasks";
 import AddTask from "./AddTask";
 import { StyledTaskTracker } from "../styles/TaskTracker.styled";
 import { ITask } from "../types";
-import { getTasks, reset } from "../features/tasks/taskSlice";
+import { getTasks, reset, updateTask } from "../features/tasks/taskSlice";
 import { RootState } from "../app/store";
 import { createTask } from "../features/tasks/taskSlice";
 import { deleteTask } from "../features/tasks/taskSlice";
@@ -43,8 +43,9 @@ const TaskTracker = () => {
     };
   }, [user, isError, message, navigate, dispatch]);
 
-  const toggleTask = (id: number) => {
+  const toggleTask = (task: ITask) => {
     buttonSound.play();
+    dispatch(updateTask({ ...task, isDone: !task.isDone }));
   };
 
   const removeTask = (task: ITask) => {
