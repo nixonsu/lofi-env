@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import brcrypt from "bcrypt";
 import { UserAuthInfoRequest } from "../types";
 import User from "../models/user.model";
+import Color from "../models/color.model";
 
 // Function to generate JWT
 const generateToken = (id: ObjectId) =>
@@ -43,6 +44,9 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 
   // Create user
   const user = await User.create({ email, name, password: hashedPassword });
+
+  // Create color resource for user
+  await Color.create({ user: user.id });
 
   // Send response
   if (user) {

@@ -4,7 +4,7 @@ const linkSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    // Each goal has a reference to the User model
+    // Each color has a reference to the User model
     ref: "User",
   },
   url: { type: String, required: false },

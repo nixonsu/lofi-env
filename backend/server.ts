@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/user.routes";
 import linkRoutes from "./routes/link.routes";
 import taskRoutes from "./routes/task.routes";
+import colorRoutes from "./routes/color.routes";
 import errorHandler from "./middleware/errorHandler";
 import connectDB from "./config/connect";
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/links", linkRoutes);
+app.use("/api/colors", colorRoutes);
 
 // Custom error handler middleware ()
 app.use(errorHandler);

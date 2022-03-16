@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import asyncHandler from "express-async-handler";
 import { UserAuthInfoRequest } from "../types";
 import Link from "../models/link.model";

@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema(
     },
     name: { type: String, requried: [true, "Please add a name"] },
     password: { type: String, required: [true, "Please add a password"] },
-    colour: { type: String, default: "white", required: true },
   },
   { timestamps: true }
 );
