@@ -11,6 +11,11 @@ export interface IColor {
   secondaryTextColor: string;
 }
 
+export interface ILink {
+  _id: string;
+  url: string;
+}
+
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
