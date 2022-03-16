@@ -20,7 +20,7 @@ const initialState = {
 } as State;
 
 // Get links
-export const getlinks = createAsyncThunk(
+export const getLinks = createAsyncThunk(
   "links/getAll",
   async (_, thunkAPI) => {
     try {
@@ -38,7 +38,7 @@ export const getlinks = createAsyncThunk(
 );
 
 // Create link
-export const createlink = createAsyncThunk(
+export const createLink = createAsyncThunk(
   "links/create",
   async (linkData: object, thunkAPI) => {
     try {
@@ -56,7 +56,7 @@ export const createlink = createAsyncThunk(
 );
 
 // Delete link
-export const deletelink = createAsyncThunk(
+export const deleteLink = createAsyncThunk(
   "links/delete",
   async (linkData: ILink, thunkAPI) => {
     try {
@@ -74,7 +74,7 @@ export const deletelink = createAsyncThunk(
 );
 
 // Toggle link
-export const updatelink = createAsyncThunk(
+export const updateLink = createAsyncThunk(
   "links/update",
   async (linkData: ILink, thunkAPI) => {
     try {
@@ -100,55 +100,55 @@ export const linkSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createlink.pending, (state) => {
+      .addCase(createLink.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(createlink.fulfilled, (state, action) => {
+      .addCase(createLink.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.links.push(action.payload);
       })
-      .addCase(createlink.rejected, (state, action) => {
+      .addCase(createLink.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = JSON.stringify(action.payload);
       })
-      .addCase(getlinks.pending, (state) => {
+      .addCase(getLinks.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getlinks.fulfilled, (state, action) => {
+      .addCase(getLinks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.links = action.payload;
       })
-      .addCase(getlinks.rejected, (state, action) => {
+      .addCase(getLinks.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = JSON.stringify(action.payload);
       })
-      .addCase(deletelink.pending, (state) => {
+      .addCase(deleteLink.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deletelink.fulfilled, (state, action) => {
+      .addCase(deleteLink.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.links = state.links.filter(
           (link) => link._id !== action.payload._id
         );
       })
-      .addCase(deletelink.rejected, (state, action) => {
+      .addCase(deleteLink.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = JSON.stringify(action.payload);
       })
-      .addCase(updatelink.pending, (state) => {
+      .addCase(updateLink.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(updatelink.fulfilled, (state, action) => {
+      .addCase(updateLink.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
       })
-      .addCase(updatelink.rejected, (state, action) => {
+      .addCase(updateLink.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = JSON.stringify(action.payload);
