@@ -32,7 +32,7 @@ const AddLink = ({ onAdd }: Props) => {
     <StyledAddTask onSubmit={onSubmit}>
       <input
         type="text"
-        placeholder="Paste youtube link here"
+        placeholder="paste youtube link here"
         value={url}
         onChange={(e) => {
           setText(e.target.value);

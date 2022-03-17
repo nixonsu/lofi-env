@@ -24,7 +24,7 @@ const AddTask = ({ onAdd }: Props) => {
     <StyledAddTask onSubmit={onSubmit}>
       <input
         type="text"
-        placeholder="Add task here"
+        placeholder="add task here"
         value={text}
         onChange={(e) => {
           setText(e.target.value);

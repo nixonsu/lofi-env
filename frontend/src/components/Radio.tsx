@@ -15,6 +15,7 @@ import IconButton from "./IconButton";
 import { StyledRadio, StyledRadioMedia } from "../styles/Radio.styled";
 import Slider from "./Slider";
 import ReactPlayer from "react-player/youtube";
+import { StyledPlaylist } from "../styles/Playlist.styled";
 
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
@@ -118,11 +119,11 @@ const Radio = () => {
         />
       </StyledRadio>
       {playlistIsShowing ? (
-        <StyledTaskTracker>
-          <h1>playlist</h1>
+        <StyledPlaylist>
+          <h1>playlist ♪</h1>
           <AddLink onAdd={addLink} />
           <Links links={links} onDelete={removeLink} />
-        </StyledTaskTracker>
+        </StyledPlaylist>
       ) : null}
     </div>
   );
