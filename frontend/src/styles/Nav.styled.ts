@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const StyledNav = styled.nav`
   display: flex;
+  position: fixed;
   justify-content: flex-end;
-  padding-right: 18px;
+  padding-top: 15px;
+  padding-right: 15px;
+  width: 100%;
 
   li {
     list-style-type: none;
@@ -12,5 +15,6 @@ export const StyledNav = styled.nav`
   ul {
     display: flex;
     gap: 20px;
+    padding: 0;
   }
 `;

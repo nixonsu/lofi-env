@@ -5,6 +5,7 @@ import { StyledNav } from "../styles/Nav.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { RootState } from "../app/store";
+import IconButton from "./IconButton";
 
 const Nav = () => {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -22,9 +23,7 @@ const Nav = () => {
       <ul>
         {user ? (
           <li>
-            <button onClick={onLogOut}>
-              <FaSignOutAlt /> Logout
-            </button>
+            <IconButton icon="pixelarticons:logout" onClick={onLogOut} />
           </li>
         ) : (
           <li>

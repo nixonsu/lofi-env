@@ -4,15 +4,17 @@ import { MouseEventHandler } from "react";
 
 interface Props {
   icon: string;
+  text?: string;
   className?: string;
   onClick?: MouseEventHandler;
   type?: string;
 }
 
-const IconButton = ({ icon, className, onClick }: Props) => {
+const IconButton = ({ icon, text, className, onClick }: Props) => {
   return (
     <StyledIconButton onClick={onClick}>
       <Icon icon={icon} className={className} width="35" height="35" />
+      {text}
     </StyledIconButton>
   );
 };
