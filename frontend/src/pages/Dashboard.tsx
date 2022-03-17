@@ -14,6 +14,7 @@ import { DefaultTheme } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getColors, updateColor } from "../features/colors/colorSlice";
 import { CirclePicker, ColorChangeHandler } from "react-color";
+import Playlist from "../components/Playlist";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const Dashboard = () => {
         <div className="section first">
           <Timer />
           <TaskTracker />
+          <Playlist />
         </div>
         <div className="section middle">
           <Header title="lofi-env" />

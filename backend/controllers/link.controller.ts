@@ -81,7 +81,7 @@ const deleteLink = asyncHandler(
       throw new Error("User not authorized");
     }
     await Link.findByIdAndDelete(req.params.id);
-    res.status(200).json(req.user.id);
+    res.status(200).json(link);
   }
 );
 

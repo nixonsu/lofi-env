@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Tasks from "./Tasks";
@@ -17,7 +17,6 @@ const TaskTracker = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
-  const { colors } = useSelector((state: RootState) => state.colors);
 
   const {
     tasks,
@@ -43,7 +42,7 @@ const TaskTracker = () => {
     return () => {
       dispatch(reset());
     };
-  }, [user, isError, message, navigate, dispatch]);
+  }, [user, isError, message, dispatch]);
 
   const toggleTask = (task: ITask) => {
     buttonSound.play();
