@@ -1,6 +1,7 @@
 import { useState, SyntheticEvent } from "react";
 import { StyledAddTask } from "../styles/AddTask.styled";
 import IconButton from "./IconButton";
+import { toast } from "react-toastify";
 
 interface Props {
   onAdd: Function;
@@ -13,7 +14,7 @@ const AddTask = ({ onAdd }: Props) => {
     e.preventDefault();
 
     if (!text) {
-      alert("Please add a task");
+      toast.warn("Please add a task");
       return;
     }
     onAdd({ text, isDone: false });

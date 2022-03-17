@@ -1,4 +1,5 @@
 import { useState, SyntheticEvent } from "react";
+import { toast } from "react-toastify";
 import { StyledAddTask } from "../styles/AddTask.styled";
 import IconButton from "./IconButton";
 
@@ -9,21 +10,29 @@ interface Props {
 const AddLink = ({ onAdd }: Props) => {
   const [url, setText] = useState("");
 
-  const onSubmit = (e: SyntheticEvent) => {
+  const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
     if (!url) {
-      alert("Please add a link");
+      toast.warn("Please add a link");
       return;
     }
-    onAdd({ url });
+
+    // Fetch title of youtube video
+    const title = await fetch(
+      `https://www.youtube.com/oembed?url=${url}&format=json`
+    )
+      .then((response) => response.json())
+      .then((data) => data.title);
+
+    onAdd({ url, title });
     setText("");
   };
   return (
     <StyledAddTask onSubmit={onSubmit}>
       <input
         type="text"
-        placeholder="Add link here"
+        placeholder="Paste youtube link here"
         value={url}
         onChange={(e) => {
           setText(e.target.value);

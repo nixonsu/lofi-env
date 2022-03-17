@@ -9,6 +9,7 @@ import { getLinks, reset } from "../features/links/linkSlice";
 import { RootState } from "../app/store";
 import { createLink } from "../features/links/linkSlice";
 import { deleteLink } from "../features/links/linkSlice";
+import { toast } from "react-toastify";
 
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
@@ -49,15 +50,22 @@ const Playlist = () => {
   };
 
   const removeLink = (link: ILink) => {
+    if (links.length === 1) {
+      toast.error("Playlist must contain atleast one track");
+      return;
+    }
     buttonSound.play();
     dispatch(deleteLink(link));
   };
+
   return (
-    <StyledTaskTracker>
-      <h1>playlist</h1>
-      <AddLink onAdd={addLink} />
-      <Links links={links} onDelete={removeLink} />
-    </StyledTaskTracker>
+    <div>
+      <StyledTaskTracker>
+        <h1>playlist</h1>
+        <AddLink onAdd={addLink} />
+        <Links links={links} onDelete={removeLink} />
+      </StyledTaskTracker>
+    </div>
   );
 };
 

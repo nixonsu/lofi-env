@@ -14,6 +14,7 @@ export interface IColor {
 export interface ILink {
   _id: string;
   url: string;
+  title: string;
 }
 
 declare module "styled-components" {

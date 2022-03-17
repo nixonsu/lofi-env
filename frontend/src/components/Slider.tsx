@@ -10,14 +10,7 @@ interface Props {
   isVertical: boolean;
 }
 
-const Slider = ({
-  value = 50,
-  min = 0,
-  max = 100,
-  step = 1,
-  onChange,
-  isVertical,
-}: Props) => {
+const Slider = ({ value, min, max, step, onChange, isVertical }: Props) => {
   // event type as SyntheticEvent and event.target type as HTMLInputElement
   const handleEvent = (
     event: SyntheticEvent & { target: HTMLInputElement }

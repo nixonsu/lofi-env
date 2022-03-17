@@ -12,7 +12,13 @@ interface State {
 }
 
 const initialState = {
-  links: [],
+  links: [
+    {
+      _id: "default",
+      url: "https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl",
+      title: "lofi hip hop radio - beats to relax/study to",
+    },
+  ],
   isError: false,
   isSuccess: false,
   isLoading: false,

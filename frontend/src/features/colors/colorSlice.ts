@@ -5,7 +5,7 @@ import colorService from "./colorService";
 
 const colors: IColor = {
   _id: "default",
-  backgroundColor: "yellow",
+  backgroundColor: "white",
   primaryTextColor: "black",
   secondaryTextColor: "lightgrey",
 };

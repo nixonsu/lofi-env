@@ -25,6 +25,7 @@ const createLink = asyncHandler(
     }
     const link = await Link.create({
       url: req.body.url,
+      title: req.body.title,
       user: req.user.id,
     });
     res.status(200).json(link);

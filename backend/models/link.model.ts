@@ -8,7 +8,8 @@ const linkSchema = new mongoose.Schema(
       // Each color has a reference to the User model
       ref: "User",
     },
-    url: { type: String, required: false },
+    url: { type: String, required: true },
+    title: { type: String, required: true },
   },
   { timestamps: true }
 );
