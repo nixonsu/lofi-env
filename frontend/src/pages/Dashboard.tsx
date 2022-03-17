@@ -46,7 +46,6 @@ const Dashboard = () => {
         <div className="section first">
           <Timer />
           <TaskTracker />
-          <Playlist />
         </div>
         <div className="section middle">
           <Header title="lofi-env" />
@@ -55,7 +54,7 @@ const Dashboard = () => {
               <img src="pixelart.png" alt="" className="art" />
             </ImageContainer>
           </div>
-          <Radio />
+          <Playlist />
         </div>
 
         <div className="section last">

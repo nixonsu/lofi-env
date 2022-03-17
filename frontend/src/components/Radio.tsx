@@ -6,33 +6,23 @@ import ReactPlayer from "react-player/youtube";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 
+interface Props {
+  index: number;
+  isPlaying: boolean;
+  toggleAudioPlay: React.MouseEventHandler<Element>;
+  nextTrack: React.MouseEventHandler<Element>;
+}
+
 // Button click sound
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
 
-const Radio = () => {
+const Radio = ({ index, isPlaying, toggleAudioPlay, nextTrack }: Props) => {
   const { links } = useSelector((state: RootState) => state.links);
 
-  const [index, setIndex] = useState(0);
   const [currentLink, setCurrentLink] = useState(links[index]);
   // Set default link to first link
-  const [isPlaying, setIsPlaying] = useState(false);
   const [radioVolume, setRadioVolume] = useState(50);
-
-  const toggleAudioPlay = () => {
-    buttonSound.play();
-    setIsPlaying(!isPlaying);
-  };
-
-  // Method to change index state (refers to array of mediaId's)
-  const nextTrack = () => {
-    if (index === links.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex((index) => index + 1);
-    }
-    setIsPlaying(true);
-  };
 
   // Side effect to changing index state
   useEffect(() => {
