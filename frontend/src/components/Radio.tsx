@@ -26,19 +26,7 @@ const Radio = () => {
   const [playlistIsShowing, setPlaylistIsShowing] = useState(false);
 
   const { user } = useSelector((state: RootState) => state.auth);
-  const {
-    links,
-    isLoading,
-    isSuccess,
-    isError,
-    message,
-  }: {
-    links: ILink[];
-    isLoading: boolean;
-    isSuccess: boolean;
-    isError: boolean;
-    message: string;
-  } = useSelector((state: RootState) => state.links);
+  const { links } = useSelector((state: RootState) => state.links);
 
   const [currentLink, setCurrentLink] = useState(links[index]);
   // Set default link to first link
@@ -55,17 +43,13 @@ const Radio = () => {
   };
 
   useEffect(() => {
-    if (!isError) {
-      console.log(message);
-    }
-
     dispatch(getLinks());
 
     // Reset state on unmount
     return () => {
       dispatch(reset());
     };
-  }, [user, isError, message, dispatch]);
+  }, [user, dispatch]);
 
   const toggleAudioPlay = () => {
     buttonSound.play();

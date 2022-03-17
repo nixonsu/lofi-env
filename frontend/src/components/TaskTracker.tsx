@@ -14,35 +14,18 @@ const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
 
 const TaskTracker = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
-
-  const {
-    tasks,
-    isLoading,
-    isSuccess,
-    isError,
-    message,
-  }: {
-    tasks: ITask[];
-    isLoading: boolean;
-    isSuccess: boolean;
-    isError: boolean;
-    message: string;
-  } = useSelector((state: RootState) => state.tasks);
+  const { tasks } = useSelector((state: RootState) => state.tasks);
 
   useEffect(() => {
-    if (!isError) {
-      console.log(message);
-    }
     dispatch(getTasks());
 
     // Reset state on unmount
     return () => {
       dispatch(reset());
     };
-  }, [user, isError, message, dispatch]);
+  }, [user, dispatch]);
 
   const toggleTask = (task: ITask) => {
     buttonSound.play();
