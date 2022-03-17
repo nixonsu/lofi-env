@@ -19,14 +19,19 @@ const AddLink = ({ onAdd }: Props) => {
     }
 
     // Fetch title of youtube video
-    const title = await fetch(
-      `https://www.youtube.com/oembed?url=${url}&format=json`
-    )
-      .then((response) => response.json())
-      .then((data) => data.title);
 
-    onAdd({ url, title });
-    setText("");
+    try {
+      const response = await fetch(
+        `https://www.youtube.com/oembed?url=${url}&format=json`
+      );
+      const data = await response.json();
+      const title = data.title;
+      onAdd({ url, title });
+      setText("");
+    } catch (error) {
+      toast.warn("Please add a valid youtube URL");
+      return;
+    }
   };
   return (
     <StyledAddTask onSubmit={onSubmit}>
