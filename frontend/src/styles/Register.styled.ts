@@ -10,11 +10,16 @@ export const StyledRegister = styled.div`
   width: 100%;
   margin: 0;
 
+  h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+
   form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 20px;
+    gap: 15px;
   }
 
   form > input {
@@ -29,9 +34,5 @@ export const StyledRegister = styled.div`
   form > button {
     border: 5px solid;
     padding: 8px;
-  }
-
-  .heading > h1 {
-    text-align: center;
   }
 `;

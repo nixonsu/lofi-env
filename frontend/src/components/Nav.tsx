@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSignInAlt, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { StyledNav } from "../styles/Nav.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { RootState } from "../app/store";
 import IconButton from "./IconButton";
+import { toast } from "react-toastify";
 
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
@@ -17,6 +17,7 @@ const Nav = () => {
 
   const onLogOut = () => {
     buttonSound.play();
+    toast.success("Logout successful");
     dispatch(logout());
     dispatch(reset);
     navigate("/");

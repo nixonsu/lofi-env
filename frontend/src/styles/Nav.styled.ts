@@ -5,8 +5,8 @@ export const StyledNav = styled.nav`
   display: flex;
   position: fixed;
   justify-content: flex-end;
-  padding-top: 15px;
-  padding-right: 15px;
+  padding-top: 25px;
+  padding-right: 25px;
   width: 100%;
 
   * {
@@ -36,8 +36,7 @@ export const StyledNav = styled.nav`
 
   .ul-word-btn {
     display: flex;
-    gap: 50px;
+    gap: 25px;
     padding: 0;
-    margin-right: 50px;
   }
 `;
