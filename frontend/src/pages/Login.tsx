@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RootState } from "../app/store";
 import Spinner from "../components/Spinner";
+import { StyledLogin } from "../styles/Login.styled";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -61,13 +62,9 @@ const Login = () => {
   }
 
   return (
-    <>
+    <StyledLogin>
       <section className="heading">
-        <h1>
-          <FaSignInAlt />
-          Login
-        </h1>
-        <p>Login to your account</p>
+        <h1>Login</h1>
       </section>
 
       <section className="form">
@@ -91,7 +88,7 @@ const Login = () => {
           <button type="submit">Login</button>
         </form>
       </section>
-    </>
+    </StyledLogin>
   );
 };
 

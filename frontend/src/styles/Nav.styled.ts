@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Unibody from "../fonts/Unibody.otf";
 
 export const StyledNav = styled.nav`
   display: flex;
@@ -8,13 +9,35 @@ export const StyledNav = styled.nav`
   padding-right: 15px;
   width: 100%;
 
+  * {
+    font-family: "Unibody";
+  }
+
+  @font-face {
+    font-family: "Unibody";
+    src: url(${Unibody});
+  }
+
   li {
     list-style-type: none;
   }
 
-  ul {
+  .word-btn {
+    border: 5px solid;
+    padding: 8px;
+    width: 120px;
+  }
+
+  .ul-btn {
     display: flex;
-    gap: 20px;
+    gap: 50px;
     padding: 0;
+  }
+
+  .ul-word-btn {
+    display: flex;
+    gap: 50px;
+    padding: 0;
+    margin-right: 50px;
   }
 `;

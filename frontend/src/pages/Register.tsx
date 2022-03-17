@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RootState } from "../app/store";
 import Spinner from "../components/Spinner";
+import { StyledRegister } from "../styles/Register.styled";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -33,6 +34,7 @@ const Register = () => {
     }
 
     if (isSuccess || user) {
+      toast.success("Registration successful");
       navigate("/");
     }
 
@@ -64,13 +66,9 @@ const Register = () => {
   }
 
   return (
-    <>
+    <StyledRegister>
       <section className="heading">
-        <h1>
-          <FaUser />
-          Register
-        </h1>
-        <p>Create an account</p>
+        <h1>Register</h1>
       </section>
 
       <section className="form">
@@ -110,7 +108,7 @@ const Register = () => {
           <button type="submit">Submit</button>
         </form>
       </section>
-    </>
+    </StyledRegister>
   );
 };
 

@@ -20,27 +20,26 @@ const Nav = () => {
 
   return (
     <StyledNav>
-      <ul>
-        {user ? (
+      {user ? (
+        <ul className="ul-btn">
           <li>
             <IconButton icon="pixelarticons:logout" onClick={onLogOut} />
           </li>
-        ) : (
+        </ul>
+      ) : (
+        <ul className="ul-word-btn">
           <li>
             <Link to="/login">
-              <FaSignInAlt /> Login
+              <button className="word-btn">Login</button>
             </Link>
           </li>
-        )}
-
-        {!user ? (
           <li>
             <Link to="/register">
-              <FaUser /> Register
+              <button className="word-btn">Register</button>
             </Link>
           </li>
-        ) : null}
-      </ul>
+        </ul>
+      )}
     </StyledNav>
   );
 };
