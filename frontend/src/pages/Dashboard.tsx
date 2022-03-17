@@ -5,7 +5,6 @@ import { RootState } from "../app/store";
 import Header from "../components/Header";
 import Timer from "../components/Timer";
 import TaskTracker from "../components/TaskTracker";
-import Radio from "../components/Radio";
 import SoundPlayers from "../components/SoundPlayers";
 import { StyledApp } from "../styles/App.styled";
 import { ImageContainer } from "../styles/ImageContainer.styled";
@@ -14,7 +13,7 @@ import { DefaultTheme } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import { getColors, updateColor } from "../features/colors/colorSlice";
 import { CirclePicker, ColorChangeHandler } from "react-color";
-import Playlist from "../components/Playlist";
+import Radio from "../components/Radio";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -54,7 +53,7 @@ const Dashboard = () => {
               <img src="pixelart.png" alt="" className="art" />
             </ImageContainer>
           </div>
-          <Playlist />
+          <Radio />
         </div>
 
         <div className="section last">
