@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const StyledTimer = styled.div`
   display: flex;
-  margin-top: 180px;
+  margin-top: 100px;
   margin-right: 10px;
   margin-bottom: 15px;
   gap: 20px;
 
-    /* Phone */
+  /* Phone */
   @media (max-width: 768px) {
     margin-top: 10px;
   }

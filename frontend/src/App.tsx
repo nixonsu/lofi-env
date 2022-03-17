@@ -5,10 +5,12 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Nav from "./components/Nav";
 import Dashboard from "./pages/Dashboard";
+import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <>
+      <GlobalStyles />
       <Router>
         <div className="App">
           <>

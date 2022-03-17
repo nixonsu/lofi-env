@@ -1,23 +1,14 @@
 import styled from "styled-components";
-import Unibody from "../fonts/Unibody.otf";
 
 export const StyledRegister = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  gap: 20px;
+  height: 90vh;
   width: 100%;
   margin: 0;
-
-  * {
-    font-family: "Unibody";
-  }
-
-  @font-face {
-    font-family: "Unibody";
-    src: url(${Unibody});
-  }
 
   form {
     display: flex;

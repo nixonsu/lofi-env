@@ -6,5 +6,6 @@ export const StyledTasks = styled.div`
   justify-content: flex-start;
   gap: 20px;
   height: 300px;
+  margin-top: 1px;
   overflow: auto;
 `;

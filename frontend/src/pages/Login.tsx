@@ -9,6 +9,9 @@ import { RootState } from "../app/store";
 import Spinner from "../components/Spinner";
 import { StyledLogin } from "../styles/Login.styled";
 
+const buttonSound = new Audio("button_sound.mp3");
+buttonSound.volume = 0.2;
+
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -49,6 +52,7 @@ const Login = () => {
 
   const handleOnSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+    buttonSound.play();
 
     const userData = {
       email,

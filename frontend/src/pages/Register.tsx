@@ -9,6 +9,9 @@ import { RootState } from "../app/store";
 import Spinner from "../components/Spinner";
 import { StyledRegister } from "../styles/Register.styled";
 
+const buttonSound = new Audio("button_sound.mp3");
+buttonSound.volume = 0.2;
+
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -51,6 +54,7 @@ const Register = () => {
 
   const handleOnSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+    buttonSound.play();
 
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");

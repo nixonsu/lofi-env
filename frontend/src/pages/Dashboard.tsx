@@ -14,6 +14,7 @@ import GlobalStyles from "../styles/GlobalStyles";
 import { getColors, updateColor } from "../features/colors/colorSlice";
 import { CirclePicker, ColorChangeHandler } from "react-color";
 import Radio from "../components/Radio";
+import { StyledDashboard } from "../styles/Dashboard.styled";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -40,31 +41,32 @@ const Dashboard = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <StyledApp>
-        <div className="section first">
-          <Timer />
-          <TaskTracker />
-        </div>
-        <div className="section middle">
-          <Header title="lofi-env" />
-          <div className="slideshow">
-            <ImageContainer>
-              <img src="pixelart.png" alt="" className="art" />
-            </ImageContainer>
+      <StyledDashboard>
+        <StyledApp>
+          <div className="section first">
+            <Timer />
+            <TaskTracker />
           </div>
-          <Radio />
-        </div>
+          <div className="section middle">
+            <Header title="lofi-env" />
+            <div className="slideshow">
+              <ImageContainer>
+                <img src="pixelart.png" alt="" className="art" />
+              </ImageContainer>
+            </div>
+            <Radio />
+          </div>
 
-        <div className="section last">
-          <CirclePicker
-            color={colors.backgroundColor}
-            colors={["#ffffcc", "#ffccee", "#ffccbb", "#ffcccc", "white"]}
-            onChange={handleOnChange}
-          />
-          <SoundPlayers />
-        </div>
-      </StyledApp>
+          <div className="section last">
+            <CirclePicker
+              color={colors.backgroundColor}
+              colors={["#ffffcc", "#ffccee", "#ffccbb", "#ffcccc", "white"]}
+              onChange={handleOnChange}
+            />
+            <SoundPlayers />
+          </div>
+        </StyledApp>
+      </StyledDashboard>
     </ThemeProvider>
   );
 };

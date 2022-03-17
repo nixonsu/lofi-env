@@ -7,15 +7,23 @@ import { logout, reset } from "../features/auth/authSlice";
 import { RootState } from "../app/store";
 import IconButton from "./IconButton";
 
+const buttonSound = new Audio("button_sound.mp3");
+buttonSound.volume = 0.2;
+
 const Nav = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onLogOut = () => {
+    buttonSound.play();
     dispatch(logout());
     dispatch(reset);
     navigate("/");
+  };
+
+  const playButtonSound = () => {
+    buttonSound.play();
   };
 
   return (
@@ -30,12 +38,16 @@ const Nav = () => {
         <ul className="ul-word-btn">
           <li>
             <Link to="/login">
-              <button className="word-btn">Login</button>
+              <button className="word-btn" onClick={playButtonSound}>
+                Login
+              </button>
             </Link>
           </li>
           <li>
             <Link to="/register">
-              <button className="word-btn">Register</button>
+              <button className="word-btn" onClick={playButtonSound}>
+                Register
+              </button>
             </Link>
           </li>
         </ul>

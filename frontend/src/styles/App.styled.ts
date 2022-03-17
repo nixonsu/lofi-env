@@ -13,11 +13,11 @@ export const StyledApp = styled.div`
     }
 
     && > .first {
-      order: -1
+      order: -1;
     }
 
     && > .middle {
-      order: 1
+      order: 1;
     }
   }
 
@@ -33,11 +33,11 @@ export const StyledApp = styled.div`
     }
 
     && > .first {
-      order: -1
+      order: -1;
     }
 
     && > .middle {
-      order: 1
+      order: 1;
     }
   }
 
