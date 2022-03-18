@@ -43,4 +43,5 @@ Deployed on: Heroku
 - [ ] Animate pixel art
 - [ ] Add login as guest functionality
 - [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
+- [ ] Add loading screen to cover assets not yet loaded
 
