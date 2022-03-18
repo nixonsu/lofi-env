@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store";
@@ -10,7 +10,6 @@ import { StyledApp } from "../styles/App.styled";
 import { ImageContainer } from "../styles/ImageContainer.styled";
 import { ThemeProvider } from "styled-components";
 import { DefaultTheme } from "styled-components";
-import GlobalStyles from "../styles/GlobalStyles";
 import { getColors, updateColor } from "../features/colors/colorSlice";
 import { CirclePicker, ColorChangeHandler } from "react-color";
 import Radio from "../components/Radio";

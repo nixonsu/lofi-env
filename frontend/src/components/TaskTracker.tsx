@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Tasks from "./Tasks";
 import AddTask from "./AddTask";
 import { StyledTaskTracker } from "../styles/TaskTracker.styled";

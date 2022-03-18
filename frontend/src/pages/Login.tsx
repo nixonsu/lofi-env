@@ -1,6 +1,5 @@
-import React, { SyntheticEvent } from "react";
+import { SyntheticEvent } from "react";
 import { useState, useEffect } from "react";
-import { FaSignInAlt } from "react-icons/fa";
 import { login, reset } from "../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

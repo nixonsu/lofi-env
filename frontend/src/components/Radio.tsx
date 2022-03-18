@@ -1,10 +1,8 @@
-import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Links from "./Links";
 import AddLink from "./AddLink";
-import { StyledTaskTracker } from "../styles/TaskTracker.styled";
 import { ILink } from "../types";
 import { getLinks, reset } from "../features/links/linkSlice";
 import { RootState } from "../app/store";
