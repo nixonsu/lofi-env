@@ -10,7 +10,7 @@ import connectDB from "./config/connect";
 
 // Load environment variables
 dotenv.config();
-const port: string | number = (process.env.PORT! || 5000);
+const port: string | number = (process.env.PORT! || 80);
 
 // Instantiate express app and use built-in middleware
 const app = express();
