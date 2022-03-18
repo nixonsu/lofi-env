@@ -2,7 +2,7 @@
   "name": "lofi-env",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/ni-xon/mern-stack-tutorial.git",
+  "repository": "https://github.com/ni-xon/lofi-env.git",
   "author": "ni-xon <nixonuch_@outlook.com>",
   "license": "MIT",
   "scripts": {
