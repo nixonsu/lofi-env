@@ -8,7 +8,7 @@
   "scripts": {
     "server": "nodemon --config nodemon.json backend/server.ts",
     "client": "yarn --cwd frontend start",
-    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "start": "yarn server",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "devDependencies": {
