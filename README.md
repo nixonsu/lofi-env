@@ -14,6 +14,16 @@ Check out the web application at: [**https://lofi-env.herokuapp.com/**](https://
 </a>
 
 
+## Features
+- User authorisation & authentication
+- Simple timer
+- Customisable playlist that allows users to paste in their own youtube links to listen to
+- Controllable radio that plays directly from the playlist
+- To-do list that allows users to input tasks and mark tasks as done
+- Customisable background color via an interactive color picker
+- Adjustable sound effects that allows users to craft their own ambient sounds
+- CRUD operations on all features
+
 ## Technologies
 **Frontend:**
 - TypeScript
@@ -42,6 +52,7 @@ Deployed on: Heroku
 - [ ] Add about section and general information
 - [ ] Animate pixel art
 - [ ] Add login as guest functionality
-- [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
 - [ ] Add loading screen to cover assets not yet loaded
+- [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
+
 
