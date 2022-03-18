@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StyledNav } from "../styles/Nav.styled";
 import { useSelector, useDispatch } from "react-redux";

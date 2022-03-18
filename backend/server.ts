@@ -10,7 +10,7 @@ import connectDB from "./config/connect";
 
 // Load environment variables
 dotenv.config();
-const port: string | number = (process.env.PORT!);
+const port: string = process.env.PORT!;
 
 // Instantiate express app and use built-in middleware
 const app = express();
@@ -33,10 +33,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(
       path.resolve(__dirname, "../", "frontend", "build", "index.html")
     )
-  );
-} else {
-  app.get("/", (req, res) =>
-    res.send("Please set to environment variables to production")
   );
 }
 
