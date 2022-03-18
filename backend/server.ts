@@ -10,7 +10,7 @@ import connectDB from "./config/connect";
 
 // Load environment variables
 dotenv.config();
-const port: string = process.env.PORT!;
+const port: string | number = (process.env.PORT! || 5000);
 
 // Instantiate express app and use built-in middleware
 const app = express();
@@ -23,7 +23,6 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/links", linkRoutes);
 app.use("/api/colors", colorRoutes);
 
-console.log(process.env.NODE_ENV);
 // Serve frontend
 if (process.env.NODE_ENV === "production") {
   // Path for static assets (build)
