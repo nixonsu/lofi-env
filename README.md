@@ -16,11 +16,13 @@ Check out the web application at: [**https://lofi-env.herokuapp.com/**](https://
 
 ## Technologies
 **Frontend:**
+- TypeScript
 - React.js
 - Redux Toolkit
 - Styled Components (CSS-in-JS)
 
 **Backend:**
+- TypeScript
 - Node.js
 - Express.js
 - MongoDB
@@ -29,6 +31,7 @@ Deployed on: Heroku
 
 ## Roadmap
 - [x] Complete front end with React.js
+- [x] Migrated front end application to TypeScript
 - [x] Complete back end & api
 - [x] Add user authorisation & authentication
 - [x] Add front end global state management
