@@ -6,7 +6,8 @@
   "author": "ni-xon <nixonuch_@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon --config nodemon.json backend/server.ts",
+    "server-dev": "nodemon --config nodemon.json backend/server.ts",
+    "server": "node backend/server.ts",
     "client": "yarn --cwd frontend start",
     "start": "concurrently \"yarn server\" \"yarn client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
