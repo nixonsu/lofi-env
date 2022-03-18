@@ -9,7 +9,7 @@
     "server": "nodemon --config nodemon.json backend/server.ts",
     "client": "yarn --cwd frontend start",
     "start": "concurrently \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
