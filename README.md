@@ -4,7 +4,7 @@ Lo-fi and pixel-art themed virtual study environment, equipped with an editable 
 
 Users can create an account and login to save their settings.
 
-Check out the web application at: [**https://lofi-env.herokuapp.com/**](https://lofi-env.herokuapp.com/)
+Check out the web application at: [**https://www.lofi-env.com/**](https://www.lofi-env.com/)
 
 
 <br>
