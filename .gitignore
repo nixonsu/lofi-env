@@ -1,2 +1,4 @@
 node_modules
 .env
+.npmrc
+.bash_profile
