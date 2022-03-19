@@ -10,7 +10,10 @@ Check out the web application at: [**https://lofi-env.herokuapp.com/**](https://
 <br>
 
 <a href="https://github.com/ni-xon/lofi-env" target="_blank">
-  <img src="images/lofi-env.png">
+  <img src="images/lofi-env-login.png">
+  <img src="images/lofi-env-white.png">
+  <img src="images/lofi-env-dark.png">
+  <img src="images/lofi-env-pink.png">
 </a>
 
 
