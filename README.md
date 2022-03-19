@@ -55,4 +55,17 @@ Deployed on: Heroku
 - [ ] Add loading screen to cover assets not yet loaded
 - [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
 
+## User testing
+- Change description of playlist feature (user got confused and pasted in a youtube playlist link instead)
+- Default sound effects to play on low vol, and have audio turn off when slider value reaches 0
+  - Makes the sound players more intuitive to operate (user wasn't aware they could turn on off the sound effects by toggling icons)
+- Load time is slow
+  - Consider adding a loading screen before complete render of content
+  - Consider code splitting
+- Color picker is difficult to see
+  - Consider having a button that cycles through colors
+- Minor styling flaws:
+  - White border around pixel art
+  - Optically unbalanced nav (login, register buttons)
+- DARK MODE!
 
