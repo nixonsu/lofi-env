@@ -7,9 +7,7 @@ interface Props {
 const Header = ({ title }: Props) => {
   return (
     <StyledHeader>
-      <div>
-        <h1>{title}</h1>
-      </div>
+      <h1>{title}</h1>
     </StyledHeader>
   );
 };

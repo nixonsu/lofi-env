@@ -3,8 +3,13 @@ import styled from "styled-components";
 export const StyledRadio = styled.div`
   flex: 1;
   p {
-    text-align: center;
+    position: absolute;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    left: 0;
+    right: 0;
   }
 `;
 
