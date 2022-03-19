@@ -86,6 +86,7 @@ const Radio = () => {
   };
 
   const handleOnClick = () => {
+    buttonSound.play();
     setPlaylistIsShowing(!playlistIsShowing);
   };
 

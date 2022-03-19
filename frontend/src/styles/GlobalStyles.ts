@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family: 'Unibody';
+        color: ${({ theme }) => theme.colors.primaryTextColor};
     }
 
     @font-face {
@@ -20,15 +21,15 @@ const GlobalStyles = createGlobalStyle`
     }
 
     ::-webkit-scrollbar {
-    width: 10px;
+        width: 10px;
     }
 
     ::-webkit-scrollbar-track {
-    background-color: lightgrey;
+        background-color: ${({ theme }) => theme.colors.secondaryTextColor};
     }
 
     ::-webkit-scrollbar-thumb {
-    background-color: black;
+        background-color: ${({ theme }) => theme.colors.primaryTextColor};
     }
 `;
 

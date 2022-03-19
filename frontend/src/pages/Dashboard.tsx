@@ -8,9 +8,7 @@ import TaskTracker from "../components/TaskTracker";
 import SoundPlayers from "../components/SoundPlayers";
 import { StyledApp } from "../styles/App.styled";
 import { ImageContainer } from "../styles/ImageContainer.styled";
-import { ThemeProvider } from "styled-components";
-import { DefaultTheme } from "styled-components";
-import { getColors, updateColor } from "../features/colors/colorSlice";
+import { getColors, updateColor, reset } from "../features/colors/colorSlice";
 import { CirclePicker, ColorChangeHandler } from "react-color";
 import Radio from "../components/Radio";
 import { StyledDashboard } from "../styles/Dashboard.styled";
@@ -22,51 +20,72 @@ const Dashboard = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const { colors } = useSelector((state: RootState) => state.colors);
 
-  // Global theme name space for dashboard styles
-  let theme: DefaultTheme = {
-    colors: colors,
-  };
-
   useEffect(() => {
     if (!user) {
       navigate("/login");
     }
     dispatch(getColors());
+
+    // Reset state on unmount
+    return () => {
+      dispatch(reset());
+    };
   }, [user, navigate, dispatch]);
 
   const handleOnChange: ColorChangeHandler = (color, event) => {
-    dispatch(updateColor({ ...colors, backgroundColor: color.hex }));
+    if (color.hex === "#181818") {
+      dispatch(
+        updateColor({
+          ...colors,
+          backgroundColor: color.hex,
+          primaryTextColor: "white",
+        })
+      );
+    } else {
+      dispatch(
+        updateColor({
+          ...colors,
+          backgroundColor: color.hex,
+          primaryTextColor: "black",
+        })
+      );
+    }
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <StyledDashboard>
-        <StyledApp>
-          <div className="section first">
-            <Timer />
-            <TaskTracker />
+    <StyledDashboard>
+      <StyledApp>
+        <div className="section first">
+          <Timer />
+          <TaskTracker />
+        </div>
+        <div className="section middle">
+          <Header title="lofi-env" />
+          <div className="slideshow">
+            <ImageContainer>
+              <img src="pixelart.png" alt="" className="art" />
+            </ImageContainer>
           </div>
-          <div className="section middle">
-            <Header title="lofi-env" />
-            <div className="slideshow">
-              <ImageContainer>
-                <img src="pixelart.png" alt="" className="art" />
-              </ImageContainer>
-            </div>
-            <Radio />
-          </div>
+          <Radio />
+        </div>
 
-          <div className="section last">
-            <CirclePicker
-              color={colors.backgroundColor}
-              colors={["#ffffcc", "#ffccee", "#ffccbb", "#ffcccc", "white"]}
-              onChange={handleOnChange}
-            />
-            <SoundPlayers />
-          </div>
-        </StyledApp>
-      </StyledDashboard>
-    </ThemeProvider>
+        <div className="section last">
+          <CirclePicker
+            color={colors.backgroundColor}
+            colors={[
+              "#ffffcc",
+              "#ffccee",
+              "#ffccbb",
+              "#ffcccc",
+              "white",
+              "#181818",
+            ]}
+            onChange={handleOnChange}
+          />
+          <SoundPlayers />
+        </div>
+      </StyledApp>
+    </StyledDashboard>
   );
 };
 
