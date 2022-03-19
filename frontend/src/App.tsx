@@ -6,34 +6,51 @@ import Register from "./pages/Register";
 import Nav from "./components/Nav";
 import Dashboard from "./pages/Dashboard";
 import GlobalStyles from "./styles/GlobalStyles";
+import { ThemeProvider } from "styled-components";
+import { useSelector } from "react-redux";
+import { RootState } from "./app/store";
+import { DefaultTheme } from "styled-components";
+import { executeReducerBuilderCallback } from "@reduxjs/toolkit/dist/mapBuilders";
 
 function App() {
+  const { colors } = useSelector((state: RootState) => state.colors);
+
+  // Global theme name space for dashboard styles
+  let theme: DefaultTheme = {
+    colors: colors,
+  };
   return (
     <>
-      <GlobalStyles />
-      <Router>
-        <div className="App">
-          <>
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </Routes>
-          </>
-        </div>
-      </Router>
-      <ToastContainer
-        position="bottom-left"
-        autoClose={3000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-      />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Router>
+          <div className="App">
+            <>
+              <Nav />
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Routes>
+            </>
+          </div>
+        </Router>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          toastStyle={{
+            color: theme.colors.primaryTextColor,
+            backgroundColor: theme.colors.backgroundColor,
+          }}
+        />
+      </ThemeProvider>
     </>
   );
 }

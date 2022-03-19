@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family: 'Unibody';
+        color: ${({ theme }) => theme.colors.primaryTextColor};
     }
 
     @font-face {
@@ -17,6 +18,18 @@ const GlobalStyles = createGlobalStyle`
 
     button {
         cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: ${({ theme }) => theme.colors.secondaryTextColor};
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.primaryTextColor};
     }
 `;
 

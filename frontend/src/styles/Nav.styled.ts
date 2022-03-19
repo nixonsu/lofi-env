@@ -1,22 +1,14 @@
 import styled from "styled-components";
-import Unibody from "../fonts/Unibody.otf";
 
 export const StyledNav = styled.nav`
   display: flex;
   position: fixed;
   justify-content: flex-end;
-  padding-top: 25px;
+  align-items: center;
+  padding-top: 20px;
   padding-right: 25px;
   width: 100%;
-
-  * {
-    font-family: "Unibody";
-  }
-
-  @font-face {
-    font-family: "Unibody";
-    src: url(${Unibody});
-  }
+  gap: 20px;
 
   li {
     list-style-type: none;

@@ -29,11 +29,14 @@ const Nav = () => {
   return (
     <StyledNav>
       {user ? (
-        <ul className="ul-btn">
-          <li>
-            <IconButton icon="pixelarticons:logout" onClick={onLogOut} />
-          </li>
-        </ul>
+        <>
+          <p>welcome back {user.name.toLowerCase()}</p>
+          <ul className="ul-btn">
+            <li>
+              <IconButton icon="pixelarticons:logout" onClick={onLogOut} />
+            </li>
+          </ul>
+        </>
       ) : (
         <ul className="ul-word-btn">
           <li>

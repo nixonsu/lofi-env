@@ -14,8 +14,8 @@ const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
 
 const SoundPlayer = ({ soundName, audioFileName }: Props) => {
-  const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [playing, setPlaying] = useState(true);
+  const [volume, setVolume] = useState(0);
 
   const toggleAudioPlay = () => {
     buttonSound.play();

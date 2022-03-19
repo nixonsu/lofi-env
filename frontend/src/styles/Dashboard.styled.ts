@@ -11,7 +11,7 @@ export const StyledDashboard = styled.div`
   }
 
   .red {
-    color: red;
+    color: #990000;
   }
 
   .half-opacity {
