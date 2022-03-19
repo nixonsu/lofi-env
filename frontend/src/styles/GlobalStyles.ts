@@ -18,6 +18,18 @@ const GlobalStyles = createGlobalStyle`
     button {
         cursor: pointer;
     }
+
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background-color: lightgrey;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background-color: black;
+    }
 `;
 
 export default GlobalStyles;
