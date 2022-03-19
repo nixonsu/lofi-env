@@ -1,6 +1,6 @@
 # lofi-env
 ## About The Project
-Lo-fi and pixel-art themed virtual study environment, equipped with a editable lofi radio, timer, to-do list and relaxing sound effects. 
+Lo-fi and pixel-art themed virtual study environment, equipped with an editable lofi radio, timer, to-do list and relaxing sound effects.
 
 Users can create an account and login to save their settings.
 
@@ -59,16 +59,20 @@ Deployed on: Heroku
 - [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
 
 ## User testing
-- Change description of playlist feature (user got confused and pasted in a youtube playlist link instead)
-- Default sound effects to play on low vol, and have audio turn off when slider value reaches 0
+- [ ] Change description of playlist feature (user got confused and pasted in a youtube playlist link instead)
+- [x] Default sound effects to play on low vol, and have audio turn off when slider value reaches 0
   - Makes the sound players more intuitive to operate (user wasn't aware they could turn on off the sound effects by toggling icons)
-- Load time is slow
+- [ ] Load time is slow
   - Consider adding a loading screen before complete render of content
   - Consider code splitting
-- Color picker is difficult to see
+- [ ] Color picker is difficult to see
   - Consider having a button that cycles through colors
-- Minor styling flaws:
+- [ ] Minor styling flaws:
   - White border around pixel art
   - Optically unbalanced nav (login, register buttons)
-- DARK MODE!
+- [x] DARK MODE!
+- [ ] Need a mute button for sound players to turn off
+- [ ] Confirm logout modal to prevent accidental user logouts
+- [ ] Keyboard shortcuts would simplify the control of the site
+  - Would then also involve an instruction section for the keys
 
