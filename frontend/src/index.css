@@ -1,0 +1,8 @@
+* {
+  font-family: "Unibody";
+}
+
+@font-face {
+  font-family: "Unibody";
+  src: url("fonts/Unibody.otf") format("opentype");
+}

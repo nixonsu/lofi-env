@@ -1,19 +1,11 @@
 import { createGlobalStyle } from "styled-components";
-import Unibody from "../fonts/Unibody.otf";
 
 const GlobalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'Unibody';
         color: ${({ theme }) => theme.colors.primaryTextColor};
-    }
-
-    @font-face {
-        font-family: 'Unibody';
-        src: url(${Unibody});
-        
     }
 
     button {
