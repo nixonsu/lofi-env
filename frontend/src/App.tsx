@@ -10,7 +10,6 @@ import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
 import { DefaultTheme } from "styled-components";
-import { executeReducerBuilderCallback } from "@reduxjs/toolkit/dist/mapBuilders";
 
 function App() {
   const { colors } = useSelector((state: RootState) => state.colors);
