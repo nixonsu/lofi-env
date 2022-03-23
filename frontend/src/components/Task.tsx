@@ -13,7 +13,7 @@ const Task = ({ task, onDelete, onToggle }: Props) => {
     <StyledTask>
       {task.isDone ? (
         <>
-          <p className="strike-through">{task.text}</p>
+          <h2 className="strike-through">{task.text}</h2>
           <IconButton onClick={() => onToggle(task)} icon={"mdi:check"} />
           <IconButton
             onClick={() => onDelete(task)}
@@ -22,7 +22,7 @@ const Task = ({ task, onDelete, onToggle }: Props) => {
         </>
       ) : (
         <>
-          <p>{task.text}</p>
+          <h2>{task.text}</h2>
           <IconButton onClick={() => onToggle(task)} icon={"mdi:check"} />
           <IconButton
             onClick={() => onDelete(task)}

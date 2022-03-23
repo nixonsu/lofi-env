@@ -107,7 +107,7 @@ const Radio = () => {
             onClick={handleOnClick}
           />
         </StyledRadioMedia>
-        <p>{currentLink.title}</p>
+        <h1>{currentLink.title}</h1>
         <ReactPlayer
           url={currentLink.url}
           playing={isPlaying}

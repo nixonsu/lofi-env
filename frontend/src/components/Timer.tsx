@@ -92,10 +92,10 @@ const Timer = () => {
 
   return (
     <StyledTimer>
-      <p className={timerIsFinished ? "red": undefined}>
+      <h1 className={timerIsFinished ? "red": undefined}>
         {`${remainingTime.minutes}`.padStart(2, "0")}:
         {`${remainingTime.seconds}`.padStart(2, "0")}
-      </p>
+      </h1>
 
       <Flex direction="row">
         <IconButton icon={"pixelarticons:plus"} onClick={incrementTime} />

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const StyledRadio = styled.div`
   flex: 1;
-  p {
+  h1 {
+    font-size: 16px;
     position: absolute;
     margin-top: 10px;
     margin-left: auto;
