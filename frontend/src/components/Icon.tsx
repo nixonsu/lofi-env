@@ -15,7 +15,7 @@ const Icon = ({ icon, height, width }: Props) => {
       {colors.backgroundColor === "#181818" ? (
         <img
           className="yes"
-          src={`${icon}-white.svg`}
+          src={`icons/${icon}-white.svg`}
           height={height}
           width={width}
           alt=""
@@ -23,7 +23,7 @@ const Icon = ({ icon, height, width }: Props) => {
       ) : (
         <img
           className="yes"
-          src={`${icon}.svg`}
+          src={`icons/${icon}.svg`}
           height={height}
           width={width}
           alt=""
