@@ -79,10 +79,13 @@ const Dashboard = () => {
           <CirclePicker
             color={colors.backgroundColor}
             colors={[
-              "#ffffcc",
-              "#ffccee",
-              "#ffccbb",
-              "#ffcccc",
+              "#e0aea4",
+              "#e9d887",
+              "#a7b78b",
+              "#89a99d",
+              "#9db4c1",
+              "#aba2b9",
+              "#9c8f81",
               "white",
               "#181818",
             ]}
