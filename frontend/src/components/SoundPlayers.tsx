@@ -5,18 +5,18 @@ const SoundPlayers = () => {
   return (
     <StyledSoundPlayers>
       <SoundPlayer
-        soundName={"bi:cloud-rain-fill"}
+        soundName={"rain"}
         audioFileName={"rain.wav"}
       />
-      <SoundPlayer soundName={"el:fire"} audioFileName={"fireplace.wav"} />
-      <SoundPlayer soundName={"bx:bx-wind"} audioFileName={"storm.wav"} />
-      <SoundPlayer soundName={"fa-solid:dove"} audioFileName={"bird.wav"} />
+      <SoundPlayer soundName={"fire"} audioFileName={"fireplace.wav"} />
+      <SoundPlayer soundName={"wind"} audioFileName={"storm.wav"} />
+      <SoundPlayer soundName={"bird"} audioFileName={"bird.wav"} />
       <SoundPlayer
-        soundName={"clarity:moon-solid"}
+        soundName={"moon"}
         audioFileName={"night.wav"}
       />
       <SoundPlayer
-        soundName={"bx:bx-restaurant"}
+        soundName={"coffee"}
         audioFileName={"restaurant.wav"}
       />
     </StyledSoundPlayers>
