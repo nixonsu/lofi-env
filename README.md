@@ -53,7 +53,7 @@ Deployed on: Heroku
 - [x] Add CRUD operations to to-do list, playlist and colour picker
 - [x] Add more visually appealing modals instead of js alerts
 - [ ] Add about section and general information
-- [ ] Animate pixel art
+- [x] Animate pixel art
 - [ ] Add login as guest functionality
 - [ ] Add loading screen to cover assets not yet loaded
 - [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
