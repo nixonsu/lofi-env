@@ -2,3 +2,4 @@ node_modules
 .env
 .bash_profile
 .DS_Store
+yarn-error.log
