@@ -17,7 +17,7 @@ export const StyledTimer = styled.div`
     margin-top: 10px;
   }
 
-  p {
+  h1 {
     font-size: 50px;
     margin: 0 0 10px 0;
   }

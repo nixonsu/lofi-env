@@ -39,6 +39,7 @@ const Dashboard = () => {
           ...colors,
           backgroundColor: color.hex,
           primaryTextColor: "white",
+          secondaryTextColor: "gray",
         })
       );
     } else {
@@ -47,6 +48,7 @@ const Dashboard = () => {
           ...colors,
           backgroundColor: color.hex,
           primaryTextColor: "black",
+          secondaryTextColor: color.hex,
         })
       );
     }
@@ -63,7 +65,11 @@ const Dashboard = () => {
           <Header title="lofi-env" />
           <div className="slideshow">
             <ImageContainer>
-              <img src="pixelart.png" alt="" className="art" />
+              {colors.backgroundColor === "#181818" ? (
+                <img src="house-dark.gif" alt="" className="art" />
+              ) : (
+                <img src="house-light.gif" alt="" className="art" />
+              )}
             </ImageContainer>
           </div>
           <Radio />

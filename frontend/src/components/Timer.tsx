@@ -40,7 +40,9 @@ const Timer = () => {
   const startTimer = () => {
     // Sets a different end time whenever the timer is played
     buttonSound.play();
-    setEndTime(Date.parse(new Date().toString()) + remainingTime.totalSeconds * 1000);
+    setEndTime(
+      Date.parse(new Date().toString()) + remainingTime.totalSeconds * 1000
+    );
     setIsActive(!isActive);
     setIsReset(!isReset);
   };
@@ -92,22 +94,39 @@ const Timer = () => {
 
   return (
     <StyledTimer>
-      <p className={timerIsFinished ? "red": undefined}>
+      <h1 className={timerIsFinished ? "red" : undefined}>
         {`${remainingTime.minutes}`.padStart(2, "0")}:
         {`${remainingTime.seconds}`.padStart(2, "0")}
-      </p>
+      </h1>
 
       <Flex direction="row">
-        <IconButton icon={"pixelarticons:plus"} onClick={incrementTime} />
+        <IconButton
+          icon={"plus"}
+          onClick={incrementTime}
+          height={40}
+          width={40}
+        />
         {!isActive ? (
           <IconButton
-            icon={"pixelarticons:play"}
+            icon={"play"}
             onClick={timerIsFinished ? undefined : startTimer}
+            height={40}
+            width={40}
           />
         ) : (
-          <IconButton icon={"pixelarticons:pause"} onClick={stopTimer} />
+          <IconButton
+            icon={"pause"}
+            onClick={stopTimer}
+            height={40}
+            width={40}
+          />
         )}
-        <IconButton icon={"pixelarticons:redo"} onClick={resetTimer} />
+        <IconButton
+          icon={"restart"}
+          onClick={resetTimer}
+          height={40}
+          width={40}
+        />
       </Flex>
     </StyledTimer>
   );

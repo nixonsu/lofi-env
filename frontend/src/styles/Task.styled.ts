@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const StyledTask = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
 
-  p {
+  h2 {
+    font-size: 16px;
     flex: 3;
   }
   button {

@@ -11,8 +11,13 @@ const Link = ({ link, onDelete }: Props) => {
   return (
     <StyledTask>
       <>
-        <p>{link.title}</p>
-        <IconButton onClick={() => onDelete(link)} icon={"mdi:window-close"} />
+        <h2>{link.title}</h2>
+        <IconButton
+          onClick={() => onDelete(link)}
+          icon={"cross"}
+          height={30}
+          width={30}
+        />
       </>
     </StyledTask>
   );

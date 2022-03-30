@@ -8,7 +8,11 @@ export const StyledNav = styled.nav`
   padding-top: 20px;
   padding-right: 25px;
   width: 100%;
-  gap: 20px;
+  gap: 15px;
+
+  h1 {
+    font-size: 16px;
+  }
 
   li {
     list-style-type: none;

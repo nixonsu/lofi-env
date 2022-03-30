@@ -21,6 +21,7 @@ export const StyledSlider = styled.input<Props>`
   &::-webkit-slider-runnable-track {
     height: 13px;
     background-color: ${({ theme }) => theme.colors.secondaryTextColor};
+    filter: brightness(85%);
     border: none;
   }
 

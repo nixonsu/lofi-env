@@ -13,20 +13,34 @@ const Task = ({ task, onDelete, onToggle }: Props) => {
     <StyledTask>
       {task.isDone ? (
         <>
-          <p className="strike-through">{task.text}</p>
-          <IconButton onClick={() => onToggle(task)} icon={"mdi:check"} />
+          <h2 className="strike-through">{task.text}</h2>
+          <IconButton
+            onClick={() => onToggle(task)}
+            icon={"tick"}
+            height={30}
+            width={30}
+          />
           <IconButton
             onClick={() => onDelete(task)}
-            icon={"mdi:window-close"}
+            icon={"cross"}
+            height={30}
+            width={30}
           />
         </>
       ) : (
         <>
-          <p>{task.text}</p>
-          <IconButton onClick={() => onToggle(task)} icon={"mdi:check"} />
+          <h2>{task.text}</h2>
+          <IconButton
+            onClick={() => onToggle(task)}
+            icon={"tick"}
+            height={30}
+            width={30}
+          />
           <IconButton
             onClick={() => onDelete(task)}
-            icon={"mdi:window-close"}
+            icon={"cross"}
+            height={30}
+            width={30}
           />
         </>
       )}

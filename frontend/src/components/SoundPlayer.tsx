@@ -31,6 +31,8 @@ const SoundPlayer = ({ soundName, audioFileName }: Props) => {
         onClick={toggleAudioPlay}
         icon={soundName}
         className={playing ? "full-opacity" : "half-opacity"}
+        height={40}
+        width={40}
       />
       <Slider
         value={volume}

@@ -95,19 +95,31 @@ const Radio = () => {
       <StyledRadio>
         <StyledRadioMedia>
           {isPlaying ? (
-            <IconButton icon="pixelarticons:pause" onClick={toggleAudioPlay} />
+            <IconButton
+              icon="pause"
+              onClick={toggleAudioPlay}
+              height={40}
+              width={40}
+            />
           ) : (
-            <IconButton icon="pixelarticons:play" onClick={toggleAudioPlay} />
+            <IconButton
+              icon="play"
+              onClick={toggleAudioPlay}
+              height={40}
+              width={40}
+            />
           )}
 
-          <IconButton icon="pixelarticons:next" onClick={nextTrack} />
+          <IconButton icon="next" onClick={nextTrack} height={40} width={40} />
           <Slider value={radioVolume} onChange={handleVolumeChange} />
           <IconButton
-            icon="pixelarticons:align-justify"
+            icon="playlist"
             onClick={handleOnClick}
+            height={40}
+            width={40}
           />
         </StyledRadioMedia>
-        <p>{currentLink.title}</p>
+        <h1>{currentLink.title}</h1>
         <ReactPlayer
           url={currentLink.url}
           playing={isPlaying}

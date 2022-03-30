@@ -30,10 +30,15 @@ const Nav = () => {
     <StyledNav>
       {user ? (
         <>
-          <p>welcome back {user.name.toLowerCase()}</p>
+          <h1>welcome back, {user.name.toLowerCase()}</h1>
           <ul className="ul-btn">
             <li>
-              <IconButton icon="pixelarticons:logout" onClick={onLogOut} />
+              <IconButton
+                icon="logout"
+                onClick={onLogOut}
+                height={30}
+                width={30}
+              />
             </li>
           </ul>
         </>
