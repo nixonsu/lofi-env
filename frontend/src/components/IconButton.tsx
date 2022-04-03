@@ -22,7 +22,7 @@ const IconButton = ({
 }: Props) => {
   return (
     <StyledIconButton onClick={onClick}>
-      <Icon name={icon} width={width} height={height} />
+      <Icon className={className} name={icon} width={width} height={height} />
       {text}
     </StyledIconButton>
   );
