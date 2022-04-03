@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RootState } from "../app/store";
-import Spinner from "../components/Spinner";
 import { StyledRegister } from "../styles/Register.styled";
 
 const buttonSound = new Audio("button_sound.mp3");
@@ -62,11 +61,6 @@ const Register = () => {
       dispatch(register(userData));
     }
   };
-
-  // If rootState isLoading display spinner component
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   return (
     <StyledRegister>

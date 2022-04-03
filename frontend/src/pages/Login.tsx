@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RootState } from "../app/store";
-import Spinner from "../components/Spinner";
 import { StyledLogin } from "../styles/Login.styled";
 
 const buttonSound = new Audio("button_sound.mp3");
@@ -23,7 +22,7 @@ const Login = () => {
   // Initialise redux hook to dispatch a function
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isSuccess, message } = useSelector(
     (state: RootState) => state.auth
   );
 
@@ -59,10 +58,6 @@ const Login = () => {
     };
     dispatch(login(userData));
   };
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   return (
     <StyledLogin>
