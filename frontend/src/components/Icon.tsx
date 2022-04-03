@@ -23,9 +23,10 @@ interface Props {
   name: string;
   height: number;
   width: number;
+  className?: string;
 }
 
-const Icon = ({ name, height, width }: Props) => {
+const Icon = ({ name, height, width, className }: Props) => {
   const { colors } = useSelector((state: RootState) => state.colors);
   let fill;
   if (colors.backgroundColor === "#181818") {
@@ -37,52 +38,132 @@ const Icon = ({ name, height, width }: Props) => {
   return (
     <>
       {name === "bird" && (
-        <BirdIcon height={height} width={width} fill={fill} />
+        <BirdIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "burd" && (
-        <BurdIcon height={height} width={width} fill={fill} />
+        <BurdIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "coffee" && (
-        <CoffeeIcon height={height} width={width} fill={fill} />
+        <CoffeeIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "cross" && (
-        <CrossIcon height={height} width={width} fill={fill} />
+        <CrossIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "fire" && (
-        <FireIcon height={height} width={width} fill={fill} />
+        <FireIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "logout" && (
-        <LogOutIcon height={height} width={width} fill={fill} />
+        <LogOutIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "moon" && (
-        <MoonIcon height={height} width={width} fill={fill} />
+        <MoonIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "next" && (
-        <NextIcon height={height} width={width} fill={fill} />
+        <NextIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "pause" && (
-        <PauseIcon height={height} width={width} fill={fill} />
+        <PauseIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "play" && (
-        <PlayIcon height={height} width={width} fill={fill} />
+        <PlayIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "playlist" && (
-        <PlaylistIcon height={height} width={width} fill={fill} />
+        <PlaylistIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "plus" && (
-        <PlusIcon height={height} width={width} fill={fill} />
+        <PlusIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "rain" && (
-        <RainIcon height={height} width={width} fill={fill} />
+        <RainIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "restart" && (
-        <RestartIcon height={height} width={width} fill={fill} />
+        <RestartIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "tick" && (
-        <TickIcon height={height} width={width} fill={fill} />
+        <TickIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
       {name === "wind" && (
-        <WindIcon height={height} width={width} fill={fill} />
+        <WindIcon
+          className={className}
+          height={height}
+          width={width}
+          fill={fill}
+        />
       )}
     </>
   );

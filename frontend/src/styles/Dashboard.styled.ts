@@ -15,11 +15,11 @@ export const StyledDashboard = styled.div`
   }
 
   .half-opacity {
-    opacity: 0.5;
+    fill-opacity: 0.5;
   }
 
   .full-opacity {
-    opacity: 1;
+    fill-opacity: 1;
   }
 
   .art {
