@@ -6,7 +6,6 @@ Users can create an account and login to save their settings.
 
 Check out the web application at: [**https://www.lofi-env.com/**](https://www.lofi-env.com/)
 
-
 <br>
 
 <a href="https://github.com/ni-xon/lofi-env" target="_blank">
@@ -41,6 +40,14 @@ Check out the web application at: [**https://www.lofi-env.com/**](https://www.lo
 - MongoDB
 
 Deployed on: Heroku
+
+## Design and Architecture
+### Data Model
+![mermaid-diagram-20220410125646](https://user-images.githubusercontent.com/57848315/162599282-2709ef9c-a3f5-41b0-9c68-bec57a46dd36.png)
+
+
+
+
 
 ## Roadmap
 - [x] Complete front end with React.js
