@@ -4,21 +4,12 @@ import SoundPlayer from "./SoundPlayer";
 const SoundPlayers = () => {
   return (
     <StyledSoundPlayers>
-      <SoundPlayer
-        soundName={"rain"}
-        audioFileName={"rain.wav"}
-      />
-      <SoundPlayer soundName={"fire"} audioFileName={"fireplace.wav"} />
-      <SoundPlayer soundName={"wind"} audioFileName={"storm.wav"} />
-      <SoundPlayer soundName={"bird"} audioFileName={"bird.wav"} />
-      <SoundPlayer
-        soundName={"moon"}
-        audioFileName={"night.wav"}
-      />
-      <SoundPlayer
-        soundName={"coffee"}
-        audioFileName={"restaurant.wav"}
-      />
+      <SoundPlayer soundName={"rain"} audioFileName={"rain.mp3"} />
+      <SoundPlayer soundName={"fire"} audioFileName={"fireplace.mp3"} />
+      <SoundPlayer soundName={"wind"} audioFileName={"storm.mp3"} />
+      <SoundPlayer soundName={"bird"} audioFileName={"bird.mp3"} />
+      <SoundPlayer soundName={"moon"} audioFileName={"night.mp3"} />
+      <SoundPlayer soundName={"coffee"} audioFileName={"restaurant.mp3"} />
     </StyledSoundPlayers>
   );
 };
