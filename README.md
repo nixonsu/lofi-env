@@ -61,8 +61,9 @@ Deployed on: Heroku
 - [x] Add more visually appealing modals instead of js alerts
 - [ ] Add about section and general information
 - [x] Animate pixel art
+- [x] Optimise size of assets for faster load (website now loads 4x faster)
 - [ ] Add login as guest functionality
-- [ ] Add loading screen to cover assets not yet loaded
+- [x] Add loading screen to cover assets not yet loaded
 - [ ] Modify application behaviour to reflect global state before api requests rather than after as it currently is (will result in a much smoother experience for the user)
 
 ## User testing
@@ -74,7 +75,7 @@ Deployed on: Heroku
   - Consider code splitting
 - [ ] Color picker is difficult to see
   - Consider having a button that cycles through colors
-- [ ] Minor styling flaws:
+- [x] Minor styling flaws:
   - White border around pixel art
   - Optically unbalanced nav (login, register buttons)
 - [x] DARK MODE!
