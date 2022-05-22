@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
@@ -10,7 +11,14 @@ import connectDB from "./config/connect";
 
 // Load environment variables
 dotenv.config();
-const port: string = process.env.PORT!;
+
+// Read in port to spin up server
+let port: string;
+if (process.env.PORT) {
+  port = process.env.PORT;
+} else {
+  port = "80"; // Default to port 80
+}
 
 // Instantiate express app and use built-in middleware
 const app = express();

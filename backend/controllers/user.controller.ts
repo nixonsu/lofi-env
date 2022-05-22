@@ -9,8 +9,12 @@ import Color from "../models/color.model";
 import Link from "../models/link.model";
 
 // Function to generate JWT
-const generateToken = (id: ObjectId) =>
-  jwt.sign({ id }, process.env.JWT_SECRET!, { expiresIn: "30d" });
+const generateToken = (id: ObjectId) => {
+  if (process.env.JWT_SECRET) {
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+  }
+  throw new Error("JWT_SECRET not recognised");
+};
 
 // @desc    Get current user data
 // @route   GET /api/users/me

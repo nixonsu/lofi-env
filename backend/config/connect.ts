@@ -22,7 +22,7 @@ const connectDB = async () => {
         );
       }
     } else {
-      throw Error(
+      throw new Error(
         "Node environment not recognised, please set node environment to either 'development' or 'production'"
       );
     }
