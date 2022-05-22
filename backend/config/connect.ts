@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import mongoose from "mongoose";
 
 const connectDB = async () => {
@@ -5,15 +6,26 @@ const connectDB = async () => {
     let uri: string;
     // Use production DB_URI if running in production
     if (process.env.NODE_ENV === "production") {
-      uri = process.env.DB_URI!;
+      if (process.env.DB_URI) {
+        uri = process.env.DB_URI;
+        const conn = await mongoose.connect(uri);
+        console.log(
+          `Database connected at ${conn.connection.host}:${conn.connection.port}`
+        );
+      }
+    } else if (process.env.NODE_ENV === "development") {
+      if (process.env.DEV_DB_URI) {
+        uri = process.env.DEV_DB_URI;
+        const conn = await mongoose.connect(uri);
+        console.log(
+          `Database connected at ${conn.connection.host}:${conn.connection.port}`
+        );
+      }
     } else {
-      uri = process.env.DEV_DB_URI!;
+      throw Error(
+        "Node environment not recognised, please set node environment to either 'development' or 'production'"
+      );
     }
-    const conn = await mongoose.connect(uri);
-
-    console.log(
-      `Database connected at ${conn.connection.host}:${conn.connection.port}`
-    );
   } catch (err) {
     console.log(err);
     process.exit(1);
