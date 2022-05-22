@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
 import { DefaultTheme } from "styled-components";
 import { executeReducerBuilderCallback } from "@reduxjs/toolkit/dist/mapBuilders";
+import { Suspense } from "react";
 
 function App() {
   const { colors } = useSelector((state: RootState) => state.colors);
@@ -24,16 +25,18 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router>
-          <div className="App">
-            <>
-              <Nav />
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </Routes>
-            </>
-          </div>
+          <Suspense fallback={null}>
+            <div className="App">
+              <>
+                <Nav />
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                </Routes>
+              </>
+            </div>
+          </Suspense>
         </Router>
         <ToastContainer
           position="bottom-left"
