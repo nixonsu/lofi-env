@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RootState } from "../app/store";
 import { StyledRegister } from "../styles/Register.styled";
+import Nav from "../components/Nav";
 
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
@@ -63,49 +64,52 @@ const Register = () => {
   };
 
   return (
-    <StyledRegister>
-      <section className="heading">
-        <h1>Register</h1>
-      </section>
+    <>
+      <Nav />
+      <StyledRegister>
+        <section className="heading">
+          <h1>Register</h1>
+        </section>
 
-      <section className="form">
-        <form onSubmit={handleOnSubmit}>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            placeholder="Enter Name"
-            onChange={handleOnChange}
-          />
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            placeholder="Enter Email"
-            onChange={handleOnChange}
-          />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={handleOnChange}
-          />
-          <input
-            type="password"
-            id="confirm-password"
-            name="confirmPassword"
-            value={confirmPassword}
-            placeholder="Confirm Password"
-            onChange={handleOnChange}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      </section>
-    </StyledRegister>
+        <section className="form">
+          <form onSubmit={handleOnSubmit}>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              placeholder="Enter Name"
+              onChange={handleOnChange}
+            />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Enter Email"
+              onChange={handleOnChange}
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={handleOnChange}
+            />
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirmPassword"
+              value={confirmPassword}
+              placeholder="Confirm Password"
+              onChange={handleOnChange}
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </section>
+      </StyledRegister>
+    </>
   );
 };
 

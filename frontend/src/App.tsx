@@ -3,14 +3,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Nav from "./components/Nav";
 import Dashboard from "./pages/Dashboard";
 import GlobalStyles from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
 import { DefaultTheme } from "styled-components";
-import { executeReducerBuilderCallback } from "@reduxjs/toolkit/dist/mapBuilders";
 
 function App() {
   const { colors } = useSelector((state: RootState) => state.colors);
@@ -25,14 +23,11 @@ function App() {
         <GlobalStyles />
         <Router>
           <div className="App">
-            <>
-              <Nav />
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </Routes>
-            </>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
           </div>
         </Router>
         <ToastContainer
