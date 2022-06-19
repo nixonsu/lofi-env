@@ -171,12 +171,26 @@ describe("User", () => {
   });
 
   describe("Update user", () => {
-    describe("Given user is logged in", () => {});
-    describe("Given user is not logged in", () => {});
+    describe("Given user exists and is logged in", () => {
+      it("Should return 200 OK with updated user data", async () => {});
+    });
+    describe("Given user is not logged in", () => {
+      it("Should return 401 Unauthorized", async () => {});
+    });
+    describe("Given user does not exist", () => {
+      it("Should return 404 Not Found", async () => {});
+    });
   });
 
   describe("Delete user", () => {
-    describe("Given user is logged in", () => {});
-    describe("Given user is not logged in", () => {});
+    describe("Given user exists and is logged in", () => {
+      it("Should return 200 OK with deleted user data", async () => {});
+    });
+    describe("Given user is not logged in", () => {
+      it("Should return 401 Unauthorized", async () => {});
+    });
+    describe("Given user does not exist", () => {
+      it("Should return 404 Not Found", async () => {});
+    });
   });
 });
