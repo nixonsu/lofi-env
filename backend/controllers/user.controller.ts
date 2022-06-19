@@ -98,7 +98,7 @@ const loginUser = asyncHandler(async (req: Request, res: Response) => {
 const updateUser = asyncHandler(async (req: Request, res: Response) => {
   const user = await User.findById(req.params.id);
   if (!user) {
-    res.status(400);
+    res.status(404);
     throw new Error("User not found");
   }
   const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -113,7 +113,7 @@ const updateUser = asyncHandler(async (req: Request, res: Response) => {
 const deleteUser = asyncHandler(async (req: Request, res: Response) => {
   const user = await User.findById(req.params.id);
   if (!user) {
-    res.status(400);
+    res.status(404);
     throw new Error("User not found");
   }
   await User.findByIdAndDelete(req.params.id);
