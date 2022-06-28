@@ -13,6 +13,11 @@ const userPayload = {
   password: "Password123",
 };
 
+const updatedName = "John Doe";
+const updatedUserPayload = {
+  name: updatedName,
+};
+
 const agent = request.agent(app);
 
 // Connection and Teardown functions
@@ -172,13 +177,88 @@ describe("User", () => {
 
   describe("Update user", () => {
     describe("Given user exists and is logged in", () => {
-      it("Should return 200 OK with updated user data", async () => {});
+      it("Should return 200 OK with updated user data", async () => {
+        // Arrange
+        const { name, email, password } = userPayload;
+        const salt = await brcrypt.genSalt(10);
+        const hashedPassword = await brcrypt.hash(password, salt);
+        await User.create({
+          email,
+          name,
+          password: hashedPassword,
+        });
+        const response = await agent.post("/api/users/login").send(userPayload);
+        const { _id, token } = response.body;
+
+        // Act
+        const { statusCode, body } = await agent
+          .put(`/api/users/${_id}`)
+          .set("Authorization", `Bearer ${token}`)
+          .send(updatedUserPayload);
+
+        // Assert
+        expect(statusCode).toBe(200);
+        expect(body).toEqual({
+          __v: expect.any(Number),
+          _id: expect.stringMatching(_id),
+          createdAt: expect.any(String),
+          email: "JohnDoe@gmail.com",
+          name: expect.stringMatching(updatedName),
+          updatedAt: expect.any(String),
+        });
+      });
     });
     describe("Given user is not logged in", () => {
-      it("Should return 401 Unauthorized", async () => {});
+      it("Should return 401 Unauthorized", async () => {
+        // Arrange
+        const { name, email, password } = userPayload;
+        const salt = await brcrypt.genSalt(10);
+        const hashedPassword = await brcrypt.hash(password, salt);
+        await User.create({
+          email,
+          name,
+          password: hashedPassword,
+        });
+        const response = await agent.post("/api/users/login").send(userPayload);
+        const { _id } = response.body;
+
+        // Act
+        const { statusCode, body } = await agent
+          .put(`/api/users/${_id}`)
+          .send(updatedUserPayload);
+
+        // Assert
+        expect(statusCode).toBe(401);
+        expect(body).toEqual({
+          message: "Not authorized. no token",
+          stack: expect.any(String),
+        });
+      });
     });
     describe("Given user does not exist", () => {
-      it("Should return 404 Not Found", async () => {});
+      it("Should return 404 Not Found", async () => {
+        // Arrange
+        const { name, email, password } = userPayload;
+        const salt = await brcrypt.genSalt(10);
+        const hashedPassword = await brcrypt.hash(password, salt);
+        await User.create({
+          email,
+          name,
+          password: hashedPassword,
+        });
+        const response = await agent.post("/api/users/login").send(userPayload);
+        const { _id, token } = response.body;
+
+        // Act
+        const { statusCode, body } = await agent
+          .put(`/api/users/nonExistentUserId`)
+          .set("Authorization", `Bearer ${token}`)
+          .send(updatedUserPayload);
+
+        // Assert
+        expect(statusCode).toBe(404);
+        expect(body).toEqual({});
+      });
     });
   });
 
