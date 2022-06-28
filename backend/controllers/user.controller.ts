@@ -95,30 +95,34 @@ const loginUser = asyncHandler(async (req: Request, res: Response) => {
 // @desc    Update user
 // @route   PUT /api/users/:id
 // @access  Private
-const updateUser = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.params.id);
-  if (!user) {
-    res.status(404);
-    throw new Error("User not found");
+const updateUser = asyncHandler(
+  async (req: UserAuthInfoRequest, res: Response) => {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updatedUser);
   }
-  const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
-  res.status(200).json(updatedUser);
-});
+);
 
 // @desc    Delete user
 // @route   DELETE /api/users/:id
 // @access  Private
-const deleteUser = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.params.id);
-  if (!user) {
-    res.status(404);
-    throw new Error("User not found");
+const deleteUser = asyncHandler(
+  async (req: UserAuthInfoRequest, res: Response) => {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json({ id: req.params.id });
   }
-  await User.findByIdAndDelete(req.params.id);
-  res.status(200).json({ id: req.params.id });
-});
+);
 
 export default {
   getCurrentUser,

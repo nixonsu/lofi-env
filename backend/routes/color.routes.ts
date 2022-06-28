@@ -1,10 +1,10 @@
 import express from "express";
 import controller from "../controllers/color.controller";
-import protect from "../middleware/authMiddleware";
+import { verifyToken } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.get("/", protect, controller.getColors);
-router.put("/:id", protect, controller.updateColor);
+router.get("/", verifyToken, controller.getColors);
+router.put("/:id", verifyToken, controller.updateColor);
 
 export default router;

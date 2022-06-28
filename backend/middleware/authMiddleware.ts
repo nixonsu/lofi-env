@@ -5,7 +5,7 @@ import { UserAuthInfoRequest } from "../types";
 import User from "../models/user.model";
 
 // This middleware verifies whether or not a JWT can be decoded to match an existing id within the DB
-const protect = asyncHandler(
+export const verifyToken = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response, next: NextFunction) => {
     let token;
     if (
@@ -43,4 +43,14 @@ const protect = asyncHandler(
   }
 );
 
-export default protect;
+// This middleware checks if the current user id matches with the user id in request params
+export const protectUserId = asyncHandler(
+  async (req: UserAuthInfoRequest, res: Response, next: NextFunction) => {
+    if (req.user.id === req.params.id) {
+      next();
+    } else {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
+  }
+);

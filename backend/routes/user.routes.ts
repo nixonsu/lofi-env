@@ -1,13 +1,13 @@
 import express from "express";
 import controller from "../controllers/user.controller";
-import protect from "../middleware/authMiddleware";
+import { verifyToken, protectUserId } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.get("/me", protect, controller.getCurrentUser);
+router.get("/me", verifyToken, controller.getCurrentUser);
 router.post("/", controller.registerUser);
 router.post("/login", controller.loginUser);
-router.put("/:id", protect, controller.updateUser);
-router.delete("/:id", protect, controller.deleteUser);
+router.put("/:id", verifyToken, protectUserId, controller.updateUser);
+router.delete("/:id", verifyToken, protectUserId, controller.deleteUser);
 
 export default router;
