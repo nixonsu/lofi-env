@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
@@ -39,18 +40,6 @@ export const verifyToken = asyncHandler(
     if (!token) {
       res.status(401);
       throw new Error("Not authorized. no token");
-    }
-  }
-);
-
-// This middleware checks if the current user id matches with the user id in request params
-export const protectUserId = asyncHandler(
-  async (req: UserAuthInfoRequest, res: Response, next: NextFunction) => {
-    if (req.user.id === req.params.id) {
-      next();
-    } else {
-      res.status(401);
-      throw new Error("User not authorized");
     }
   }
 );

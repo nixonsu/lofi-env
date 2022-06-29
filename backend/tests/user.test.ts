@@ -188,11 +188,11 @@ describe("User", () => {
           password: hashedPassword,
         });
         const response = await agent.post("/api/users/login").send(userPayload);
-        const { _id, token } = response.body;
+        const { _id: id, token } = response.body;
 
         // Act
         const { statusCode, body } = await agent
-          .put(`/api/users/${_id}`)
+          .put(`/api/users/${id}`)
           .set("Authorization", `Bearer ${token}`)
           .send(updatedUserPayload);
 
@@ -200,10 +200,10 @@ describe("User", () => {
         expect(statusCode).toBe(200);
         expect(body).toEqual({
           __v: expect.any(Number),
-          _id: expect.stringMatching(_id),
+          _id: id,
           createdAt: expect.any(String),
           email: "JohnDoe@gmail.com",
-          name: expect.stringMatching(updatedName),
+          name: updatedName,
           updatedAt: expect.any(String),
         });
       });
@@ -247,30 +247,102 @@ describe("User", () => {
           password: hashedPassword,
         });
         const response = await agent.post("/api/users/login").send(userPayload);
-        const { _id, token } = response.body;
+        const { token } = response.body;
 
         // Act
         const { statusCode, body } = await agent
-          .put(`/api/users/nonExistentUserId`)
+          .put(`/api/users/628e3317f15de6f0fa103ef1`)
           .set("Authorization", `Bearer ${token}`)
           .send(updatedUserPayload);
 
         // Assert
         expect(statusCode).toBe(404);
-        expect(body).toEqual({});
+        expect(body).toEqual({
+          message: "User not found",
+          stack: expect.any(String),
+        });
       });
     });
   });
 
   describe("Delete user", () => {
     describe("Given user exists and is logged in", () => {
-      it("Should return 200 OK with deleted user data", async () => {});
+      it("Should return 200 OK with deleted user id", async () => {
+        // Arrange
+        const { name, email, password } = userPayload;
+        const salt = await brcrypt.genSalt(10);
+        const hashedPassword = await brcrypt.hash(password, salt);
+        await User.create({
+          email,
+          name,
+          password: hashedPassword,
+        });
+        const response = await agent.post("/api/users/login").send(userPayload);
+        const { _id: id, token } = response.body;
+
+        // Act
+        const { statusCode, body } = await agent
+          .delete(`/api/users/${id}`)
+          .set("Authorization", `Bearer ${token}`);
+
+        // Assert
+        expect(statusCode).toBe(200);
+        expect(body).toEqual({
+          id,
+        });
+      });
     });
     describe("Given user is not logged in", () => {
-      it("Should return 401 Unauthorized", async () => {});
+      it("Should return 401 Unauthorized", async () => {
+        // Arrange
+        const { name, email, password } = userPayload;
+        const salt = await brcrypt.genSalt(10);
+        const hashedPassword = await brcrypt.hash(password, salt);
+        await User.create({
+          email,
+          name,
+          password: hashedPassword,
+        });
+        const response = await agent.post("/api/users/login").send(userPayload);
+        const { _id } = response.body;
+
+        // Act
+        const { statusCode, body } = await agent.delete(`/api/users/${_id}`);
+
+        // Assert
+        expect(statusCode).toBe(401);
+        expect(body).toEqual({
+          message: "Not authorized. no token",
+          stack: expect.any(String),
+        });
+      });
     });
     describe("Given user does not exist", () => {
-      it("Should return 404 Not Found", async () => {});
+      it("Should return 404 Not Found", async () => {
+        // Arrange
+        const { name, email, password } = userPayload;
+        const salt = await brcrypt.genSalt(10);
+        const hashedPassword = await brcrypt.hash(password, salt);
+        await User.create({
+          email,
+          name,
+          password: hashedPassword,
+        });
+        const response = await agent.post("/api/users/login").send(userPayload);
+        const { token } = response.body;
+
+        // Act
+        const { statusCode, body } = await agent
+          .delete(`/api/users/628e3317f15de6f0fa103ef1`)
+          .set("Authorization", `Bearer ${token}`);
+
+        // Assert
+        expect(statusCode).toBe(404);
+        expect(body).toEqual({
+          message: "User not found",
+          stack: expect.any(String),
+        });
+      });
     });
   });
 });

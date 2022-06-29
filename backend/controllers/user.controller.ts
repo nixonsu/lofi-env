@@ -102,6 +102,10 @@ const updateUser = asyncHandler(
       res.status(404);
       throw new Error("User not found");
     }
+    if (req.user.id !== req.params.id) {
+      res.status(401);
+      throw new Error("User not authorized");
+    }
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     }).select("-password");
@@ -118,6 +122,10 @@ const deleteUser = asyncHandler(
     if (!user) {
       res.status(404);
       throw new Error("User not found");
+    }
+    if (req.user.id !== req.params.id) {
+      res.status(401);
+      throw new Error("User not authorized");
     }
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json({ id: req.params.id });
