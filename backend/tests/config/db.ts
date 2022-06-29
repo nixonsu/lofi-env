@@ -4,7 +4,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { MongoClient } from "mongodb";
 
 let connection;
 let mongoServer: MongoMemoryServer;

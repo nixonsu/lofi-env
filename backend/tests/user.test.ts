@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable @typescript-eslint/no-empty-function */
 import request from "supertest";
 import brcrypt from "bcrypt";
 import db from "./config/db";
@@ -70,7 +68,7 @@ describe("User", () => {
     });
     describe("Given user does not exist", () => {
       it("Should return 201 Created", async () => {
-        // Arrange/Act
+        // Act
         const { statusCode, body } = await agent
           .post("/api/users")
           .send(userPayload);
@@ -90,7 +88,7 @@ describe("User", () => {
   describe("Login user (create user session)", () => {
     describe("Given email and password are invalid", () => {
       it("Should return 401 Unauthorized", async () => {
-        // Arrange/Act
+        // Act
         const { statusCode } = await agent
           .post("/api/users/login")
           .send({ ...userPayload, password: "wrong password" });
@@ -130,7 +128,7 @@ describe("User", () => {
 
   describe("Get user", () => {
     describe("Given user is logged in", () => {
-      it("Should return 200 OK with user information", async () => {
+      it("Should return 200 OK with user json", async () => {
         // Arrange
         const { name, email, password } = userPayload;
         const salt = await brcrypt.genSalt(10);
@@ -162,7 +160,7 @@ describe("User", () => {
     });
     describe("Given user is not logged in", () => {
       it("Should return 401 Unauthorized", async () => {
-        // Arrange/Act
+        // Act
         const { statusCode, body } = await agent.get("/api/users/me");
 
         // Assert
@@ -177,7 +175,7 @@ describe("User", () => {
 
   describe("Update user", () => {
     describe("Given user exists and is logged in", () => {
-      it("Should return 200 OK with updated user data", async () => {
+      it("Should return 200 OK with updated user json", async () => {
         // Arrange
         const { name, email, password } = userPayload;
         const salt = await brcrypt.genSalt(10);
