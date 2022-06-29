@@ -22,13 +22,13 @@ const updateColor = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
     const color = await Color.findById(req.params.id);
     if (!color) {
-      res.status(400);
+      res.status(404);
       throw new Error("Color not found");
     }
     // Check that user exists
     const user = await User.findById(req.user.id);
     if (!user) {
-      res.status(401);
+      res.status(404);
       throw new Error("User not found");
     }
     // Ensure logged in user matches color user
