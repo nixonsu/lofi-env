@@ -42,7 +42,7 @@ afterAll(async () => {
 });
 
 describe("Color", () => {
-  describe("Get color", () => {
+  describe("Get colors", () => {
     describe("Given user is logged in", () => {
       it("Should return 200 OK with color json", async () => {
         // Arrange

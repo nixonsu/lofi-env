@@ -28,7 +28,7 @@ const createLink = asyncHandler(
       title: req.body.title,
       user: req.user.id,
     });
-    res.status(200).json(link);
+    res.status(201).json(link);
   }
 );
 
@@ -39,13 +39,13 @@ const updateLink = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
     const link = await Link.findById(req.params.id);
     if (!link) {
-      res.status(400);
+      res.status(404);
       throw new Error("Link not found");
     }
     // Check that user exists
     const user = await User.findById(req.user.id);
     if (!user) {
-      res.status(401);
+      res.status(404);
       throw new Error("User not found");
     }
     // Ensure logged in user matches link user
@@ -67,13 +67,13 @@ const deleteLink = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
     const link = await Link.findById(req.params.id);
     if (!link) {
-      res.status(400);
+      res.status(404);
       throw new Error("Link not found");
     }
     // Check that user exists
     const user = await User.findById(req.user.id);
     if (!user) {
-      res.status(401);
+      res.status(404);
       throw new Error("User not found");
     }
     // Ensure logged in user matches link user
