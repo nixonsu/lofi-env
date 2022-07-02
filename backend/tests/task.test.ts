@@ -234,7 +234,7 @@ describe("Task", () => {
           .post("/api/users/login")
           .send(userPayload);
         const { _id: userId, token } = loginResponse.body;
-        const { _id: taskId } = await Task.create({
+        const { id: taskId } = await Task.create({
           user: userId,
           text: "Wash clothes",
           isDone: false,
@@ -253,10 +253,40 @@ describe("Task", () => {
       });
     });
     describe("Given user is not logged in", () => {
-      it("Should return 401 Unauthorized", async () => {});
+      it("Should return 401 Unauthorized", async () => {
+        // Act
+        const { statusCode, body } = await agent.delete(
+          `/api/tasks/628e3317f15de6f0fa103ef1`
+        );
+
+        // Assert
+        expect(statusCode).toBe(401);
+        expect(body).toEqual({
+          message: "Not authorized. no token",
+          stack: expect.any(String),
+        });
+      });
     });
     describe("Given task does not exist", () => {
-      it("Should return 404 Not Found", async () => {});
+      it("Should return 404 Not Found", async () => {
+        // Arrange
+        const loginResponse = await agent
+          .post("/api/users/login")
+          .send(userPayload);
+        const { _id: userId, token } = loginResponse.body;
+
+        // Act
+        const { statusCode, body } = await agent
+          .delete("/api/tasks/628e3317f15de6f0fa103ef1")
+          .set("Authorization", `Bearer ${token}`);
+
+        // Assert
+        expect(statusCode).toBe(404);
+        expect(body).toEqual({
+          message: "Task not found",
+          stack: expect.any(String),
+        });
+      });
     });
   });
 });
