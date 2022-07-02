@@ -79,7 +79,7 @@ const deleteTask = asyncHandler(
       throw new Error("User not authorized");
     }
     await Task.findByIdAndDelete(req.params.id);
-    res.status(200).json(task);
+    res.status(200).json({ id: req.params.id });
   }
 );
 
