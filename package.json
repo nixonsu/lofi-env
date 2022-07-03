@@ -9,6 +9,7 @@
     "server": "nodemon --config nodemon.json backend/server.ts",
     "client": "yarn --cwd frontend start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "start": "yarn server",
     "heroku-postbuild": "cd frontend && npm install && npm run build",
     "test": "export NODE_ENV=test && jest"
   },
