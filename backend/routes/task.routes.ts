@@ -1,12 +1,12 @@
 import express from "express";
 import controller from "../controllers/task.controller";
-import protect from "../middleware/authMiddleware";
+import { verifyToken } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.get("/", protect, controller.getTasks);
-router.post("/", protect, controller.createTask);
-router.put("/:id", protect, controller.updateTask);
-router.delete("/:id", protect, controller.deleteTask);
+router.get("/", verifyToken, controller.getTasks);
+router.post("/", verifyToken, controller.createTask);
+router.put("/:id", verifyToken, controller.updateTask);
+router.delete("/:id", verifyToken, controller.deleteTask);
 
 export default router;

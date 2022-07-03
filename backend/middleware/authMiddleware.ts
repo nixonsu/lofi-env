@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
@@ -5,7 +6,7 @@ import { UserAuthInfoRequest } from "../types";
 import User from "../models/user.model";
 
 // This middleware verifies whether or not a JWT can be decoded to match an existing id within the DB
-const protect = asyncHandler(
+export const verifyToken = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response, next: NextFunction) => {
     let token;
     if (
@@ -42,5 +43,3 @@ const protect = asyncHandler(
     }
   }
 );
-
-export default protect;
