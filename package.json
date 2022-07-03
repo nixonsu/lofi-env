@@ -8,14 +8,20 @@
   "scripts": {
     "server": "nodemon --config nodemon.json backend/server.ts",
     "client": "yarn --cwd frontend start",
-    "start": "yarn server",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
+    "test": "export NODE_ENV=test && jest"
   },
   "devDependencies": {
     "@designed-and-developed/eslint-config-prettier-typescript-react": "^1.0.9",
+    "@types/jest": "^28.1.1",
+    "@types/supertest": "^2.0.12",
     "eslint": "^8.10.0",
-    "prettier": "^2.5.1"
+    "jest": "^28.1.1",
+    "mongodb-memory-server": "^8.6.0",
+    "prettier": "^2.5.1",
+    "supertest": "^6.2.3",
+    "ts-jest": "^28.0.5"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",

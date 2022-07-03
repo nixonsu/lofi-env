@@ -10,7 +10,7 @@ const connectDB = async () => {
         uri = process.env.DB_URI;
         const conn = await mongoose.connect(uri);
         console.log(
-          `Database connected at ${conn.connection.host}:${conn.connection.port}`
+          `Production Database connected at ${conn.connection.host}:${conn.connection.port}`
         );
       }
     } else if (process.env.NODE_ENV === "development") {
@@ -18,7 +18,7 @@ const connectDB = async () => {
         uri = process.env.DEV_DB_URI;
         const conn = await mongoose.connect(uri);
         console.log(
-          `Database connected at ${conn.connection.host}:${conn.connection.port}`
+          `Development Database connected at ${conn.connection.host}:${conn.connection.port}`
         );
       }
     } else {

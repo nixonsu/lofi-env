@@ -27,7 +27,7 @@ const createTask = asyncHandler(
       text: req.body.text,
       isDone: false,
     });
-    res.status(200).json(task);
+    res.status(201).json(task);
   }
 );
 
@@ -38,12 +38,12 @@ const updateTask = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
     const task = await Task.findById(req.params.id);
     if (!task) {
-      res.status(400);
+      res.status(404);
       throw new Error("Task not found");
     }
     // Check that user exists
     if (!req.user) {
-      res.status(401);
+      res.status(404);
       throw new Error("User not found");
     }
     // Ensure logged in user matches task user
@@ -65,12 +65,12 @@ const deleteTask = asyncHandler(
   async (req: UserAuthInfoRequest, res: Response) => {
     const task = await Task.findById(req.params.id);
     if (!task) {
-      res.status(400);
+      res.status(404);
       throw new Error("Task not found");
     }
     // Check that user exists
     if (!req.user) {
-      res.status(401);
+      res.status(404);
       throw new Error("User not found");
     }
     // Ensure logged in user matches task user
@@ -79,7 +79,7 @@ const deleteTask = asyncHandler(
       throw new Error("User not authorized");
     }
     await Task.findByIdAndDelete(req.params.id);
-    res.status(200).json(task);
+    res.status(200).json({ id: req.params.id });
   }
 );
 
