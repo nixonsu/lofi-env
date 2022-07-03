@@ -1,3 +1,3 @@
 {
-  "extends": "@designed-and-developed/eslint-config-prettier-typescript-react"
+  "extends": "airbnb"
 }
