@@ -34,6 +34,11 @@ jobs:
 
     - name: Install dependencies
       run: yarn
+      
+    - name: Display custom environment variables
+      run: echo "JWT_SECRET is ${{ env.JWT_SECRET }}"
+           echo "DEV_DB_URI is ${{ env.DEV_DB_URI }}"
+           echo "NODE_ENV is ${{ env.NODE_ENV }}"
 
     - name: Run tests
       run: yarn test
