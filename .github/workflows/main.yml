@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI/CD Pipeline
 
 # Controls when the workflow will run
 on:
@@ -20,10 +20,6 @@ jobs:
     environment: lofi-env  
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      DEV_DB_URI: ${{ secrets.DEV_DB_URI }}
-      NODE_ENV: ${{ secrets.NODE_ENV }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,14 +31,20 @@ jobs:
 
     - name: Install dependencies
       run: yarn
-
+      
+  test:
+    environment: lofi-env
+    runs-on: ubuntu-latest
+    needs: [build]
+    
+    steps:
     - name: Run tests
       run: yarn test
       
   deploy:
     environment: lofi-env
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [test]
     steps:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 
