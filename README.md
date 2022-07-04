@@ -1,4 +1,4 @@
-# lofi-env
+# Lofi-env
 
 ## About The Project
 
@@ -44,11 +44,15 @@ Check out the web application at: [**https://www.lofi-env.com/**](https://www.lo
 - Express.js
 - MongoDB
 
-Deployed on: Heroku
-
 ## Design and Architecture
 
 ### Data Model
+The data model implements a referenced model where related documents are linked to a user with userId.
 
 ![Alt text](/images/Data%20Model.svg)
+
+## Testing & Deployment
+Tests for backend APIs are written using the [Jest](https://jestjs.io/) library and automated as part of the build step of the CI/CD pipeline.
+
+The web application is automatically deployed to [Heroku](https://dashboard.heroku.com/) as part of the deploy step of the CI/CD pipeline.
 
