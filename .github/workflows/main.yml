@@ -40,6 +40,7 @@ jobs:
       run: yarn test
       
   deploy:
+    environment: lofi-env
     runs-on: ubuntu-latest
     needs: [build]
     steps:
@@ -49,5 +50,6 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "lofi-env"
           heroku_email: "nixon.s.uch@gmail.com"
+          procfile: 'web: npm start'
 
     
