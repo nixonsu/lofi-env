@@ -2,9 +2,7 @@
 
 ## About The Project
 
-Lo-fi and pixel-art themed virtual study environment, equipped with an editable lofi radio, timer, to-do list and relaxing sound effects.
-
-Users can create an account and login to save their settings.
+Lo-fi and pixel-art themed virtual study environment, equipped with an editable lofi radio, timer, to-do list and relaxing sound effects. This project was essentially born out of my desire for an all-in-one space for all my study needs throughout university 🎓
 
 Check out the web application at: [**https://www.lofi-env.com/**](https://www.lofi-env.com/)
 
