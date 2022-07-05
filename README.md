@@ -10,12 +10,17 @@ Check out the web application at: [**https://www.lofi-env.com/**](https://www.lo
 
 <br>
 
-<a href="https://github.com/ni-xon/lofi-env" target="_blank">
-  <img src="images/lofi-env-login.png">
-  <img src="images/lofi-env-white.png">
-  <img src="images/lofi-env-dark.png">
-  <img src="images/lofi-env-pink.png">
-</a>
+![register](https://user-images.githubusercontent.com/57848315/177245668-6e97a562-cce1-435b-91cb-2e9deb8a0d5b.gif)
+<p align = "center">
+<i>User registeration and changing background colour</i>
+</p>
+
+<br>
+
+![app_features](https://user-images.githubusercontent.com/57848315/177245674-e939ca06-0755-40a9-85e8-b89c75efd833.gif)
+<p align = "center">
+<i>Main features showcase</i>
+</p>
 
 ## Features
 
@@ -45,6 +50,12 @@ Check out the web application at: [**https://www.lofi-env.com/**](https://www.lo
 - MongoDB
 
 ## Design and Architecture
+
+### Architecture
+The project implements the MERN (MongoDB, Express, React, Node.JS) stack.
+
+![image](https://user-images.githubusercontent.com/57848315/177243647-85737f56-d0b9-46bc-abe2-28073cc2b943.png)
+
 
 ### Data Model
 The data model implements a referenced model where related documents are linked to a user with userId.
