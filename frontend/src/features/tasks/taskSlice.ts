@@ -133,7 +133,7 @@ export const taskSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.tasks = state.tasks.filter(
-          (task) => task._id !== action.payload._id
+          (task) => task._id !== action.payload.id
         );
       })
       .addCase(deleteTask.rejected, (state, action) => {

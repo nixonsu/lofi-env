@@ -139,7 +139,7 @@ export const linkSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.links = state.links.filter(
-          (link) => link._id !== action.payload._id
+          (link) => link._id !== action.payload.id
         );
       })
       .addCase(deleteLink.rejected, (state, action) => {
