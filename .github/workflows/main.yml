@@ -29,19 +29,19 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-  test:
-    environment: lofi-env-dev
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    env:
-      JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      DEV_DB_URI: ${{ secrets.DEV_DB_URI }}
-      NODE_ENV: ${{ secrets.NODE_ENV }}
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run tests
-        run: yarn test
+  # test:
+  #   environment: lofi-env-dev
+  #   # The type of runner that the job will run on
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     JWT_SECRET: ${{ secrets.JWT_SECRET }}
+  #     DEV_DB_URI: ${{ secrets.DEV_DB_URI }}
+  #     NODE_ENV: ${{ secrets.NODE_ENV }}
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Run tests
+  #       run: yarn test
 
   deploy:
     environment: lofi-env-prod
