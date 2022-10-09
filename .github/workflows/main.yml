@@ -34,6 +34,7 @@ jobs:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
       DEV_DB_URI: ${{ secrets.DEV_DB_URI }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
+    needs: [build]
     steps:
       - name: Run tests
         run: yarn test
@@ -47,7 +48,7 @@ jobs:
       DB_URI: ${{ secrets.DB_URI }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
       PORT: ${{ secrets.PORT }}
-    needs: [build]
+    needs: [test]
     steps:
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
