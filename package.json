@@ -11,7 +11,7 @@
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "start": "yarn server",
     "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "test": "jest"
+    "test": "export NODE_ENV=test && jest"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
