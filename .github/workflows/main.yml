@@ -36,6 +36,7 @@ jobs:
       NODE_ENV: ${{ secrets.NODE_ENV }}
     needs: [build]
     steps:
+      - uses: actions/checkout@v2
       - name: Run tests
         run: yarn test
 
