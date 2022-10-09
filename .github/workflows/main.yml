@@ -33,8 +33,6 @@ jobs:
           node-version: "17.x"
       - name: Install dependencies
         run: yarn
-      - name: Run tests
-        run: yarn test
 
   deploy:
     environment: lofi-env-prod
