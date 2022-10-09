@@ -63,5 +63,5 @@ The data model implements a referenced model where related documents are linked 
 ## Testing & Deployment
 Tests for backend APIs are written using the [Jest](https://jestjs.io/) library and automated as part of the build step of the CI/CD pipeline.
 
-The web application is automatically deployed to [Heroku](https://dashboard.heroku.com/) as part of the deploy step of the CI/CD pipeline.
+The web application is automatically deployed with [Fly.io](https://fly.io/) as part of the deploy step of the CI/CD pipeline.
 
