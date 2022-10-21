@@ -191,7 +191,7 @@ describe("Link", () => {
           createdAt: expect.any(String),
           title: "A Lofi Song",
           updatedAt: expect.any(String),
-          url: "https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl",
+          url: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
           user: userId,
         });
       });
@@ -224,7 +224,7 @@ describe("Link", () => {
 
         // Act
         const { statusCode, body } = await agent
-          .put(`/api/links/628e3317f15de6f0fa103ef1`)
+          .put("/api/links/628e3317f15de6f0fa103ef1")
           .set("Authorization", `Bearer ${token}`)
           .send({
             title: "A Lofi Song",
@@ -290,7 +290,7 @@ describe("Link", () => {
 
         // Act
         const { statusCode, body } = await agent
-          .delete(`/api/links/628e3317f15de6f0fa103ef1`)
+          .delete("/api/links/628e3317f15de6f0fa103ef1")
           .set("Authorization", `Bearer ${token}`);
 
         // Assert
