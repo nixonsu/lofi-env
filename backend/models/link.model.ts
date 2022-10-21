@@ -11,8 +11,7 @@ const linkSchema = new mongoose.Schema(
     url: {
       type: String,
       required: true,
-      default:
-        "https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl",
+      default: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
     },
     title: {
       type: String,
