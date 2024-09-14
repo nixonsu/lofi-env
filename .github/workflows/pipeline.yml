@@ -9,8 +9,6 @@ on:
   pull_request:
     branches: ["master"]
 
-env:
-
 jobs:
   build:
     name: 🐳 Build & publish docker image
