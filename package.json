@@ -6,7 +6,7 @@
   "author": "nixonsu <nixon.s.uch@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "server": "nodemon --config nodemon.json backend/server.ts",
+    "server": "nodemon --config nodemon.json backend/src/server.ts",
     "client": "yarn --cwd frontend start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "start": "yarn server",

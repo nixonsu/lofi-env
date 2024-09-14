@@ -2,9 +2,9 @@
 import request from "supertest";
 import brcrypt from "bcrypt";
 import db from "./config/db";
-import app from "../server";
-import User from "../models/user.model";
-import Color from "../models/color.model";
+import app from "../src/server";
+import User from "../src/models/user.model";
+import Color from "../src/models/color.model";
 
 const userPayload = {
   name: "John",
