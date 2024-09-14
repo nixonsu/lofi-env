@@ -58,7 +58,7 @@ The project implements the MERN (MongoDB, Express, React, Node.JS) stack.
 ### Data Model
 The data model implements a referenced model where related documents are linked to a user with userId.
 
-![Alt text](/images/Data%20Model.svg)
+![Alt text](/docs/images/Data%20Model.svg)
 
 ## Testing & Deployment
 Tests for backend APIs are written using the [Jest](https://jestjs.io/) library and automated as part of the build step of the CI/CD pipeline.
