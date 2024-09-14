@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --config nodemon.json src/server.ts",
+    "start": "nodemon src/server.ts",
     "test": "export ENV=test && jest"
   },
   "dependencies": {
