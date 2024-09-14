@@ -2,8 +2,8 @@
   "name": "lofi-env",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/ni-xon/lofi-env.git",
-  "author": "ni-xon <nixonuch_@outlook.com>",
+  "repository": "https://github.com/nixonsu/lofi-env",
+  "author": "nixonsu <nixon.s.uch@gmail.com>",
   "license": "MIT",
   "scripts": {
     "server": "nodemon --config nodemon.json backend/server.ts",
@@ -11,7 +11,7 @@
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "start": "yarn server",
     "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "test": "export NODE_ENV=test && jest"
+    "test": "export ENV=test && jest"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
