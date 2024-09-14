@@ -6,10 +6,12 @@
   "author": "nixonsu <nixon.s.uch@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "yarn install:all && yarn dev",
+    "install:all": "yarn && yarn --cwd backend && yarn --cwd frontend",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "server": "yarn --cwd backend start",
     "client": "yarn --cwd frontend start",
-    "build": "cd frontend && npm install && npm run build"
+    "build": "cd frontend && yarn && yarn build"
   },
   "devDependencies": {
     "concurrently": "^7.0.0"
