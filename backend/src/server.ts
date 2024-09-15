@@ -17,7 +17,7 @@ let port: string;
 if (process.env.PORT) {
   port = process.env.PORT;
 } else {
-  port = "80"; // Default to port 80
+  port = "4000"; // Default to port 4000
 }
 
 // Instantiate express app and use built-in middleware
