@@ -65,3 +65,28 @@ Tests for backend APIs are written using the [Jest](https://jestjs.io/) library 
 
 The web application is automatically deployed with [Fly.io](https://fly.io/) as part of the deploy step of the CI/CD pipeline.
 
+
+## Usage
+### Run it locally
+1. Clone the repo
+2. Add `.env` file with following contents to `./backend`
+
+```zsh
+ENV=dev
+JWT_SECRET=anyStringYouWouldLike
+DB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority
+```
+
+*[MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) allows you to host a couple of free databases; pretty neat. You can deploy your own and grab the `DB_URI` from there.*
+
+3. Navigate to root directory and run with your desired package manager:
+```zsh
+yarn start          # with yarn
+```
+4. All dependencies will be installed and web application will be accessible on http://localhost:3000
+
+**NOTE:** When application is started locally, requests made from the frontend are proxied to port 4000 (default port for the backend). Proxy is specified in `./frontend/package.json`.
+
+
+### Troubleshooting
+**Bug:** If the frontend just shows a blank screen, it's most likely a local storage issue. This is a known bug, but you can fix this by clearing `users` entry from local storage.
