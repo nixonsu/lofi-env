@@ -6,3 +6,7 @@
   font-family: "Unibody";
   src: url("fonts/Unibody.otf") format("opentype");
 }
+
+body {
+  overscroll-behavior-y: none;
+}

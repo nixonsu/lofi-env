@@ -5,8 +5,8 @@ export const StyledNav = styled.nav`
   position: fixed;
   justify-content: flex-end;
   align-items: center;
-  padding-top: 20px;
-  padding-right: 25px;
+  padding-top: 15px;
+  padding-right: 20px;
   width: 100%;
   gap: 15px;
 
