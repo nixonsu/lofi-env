@@ -21,6 +21,8 @@ jobs:
           node-version: "17.x"
       - name: Run unit & integration tests
         run: ./ops/scripts/run-tests.sh
+        env:
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
   build:
     name: 🐳 Build & publish docker image
